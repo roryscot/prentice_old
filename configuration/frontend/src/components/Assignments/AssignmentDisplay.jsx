@@ -16,7 +16,7 @@ class AssignmentDisplay extends Component {
 
     state = {
         complete: this.props.assignment.complete,
-        unSubmitted: true,
+            unSubmitted: true,
         editing: false,
         updateAssignmentId: null,
         description: this.props.assignment.description,
@@ -26,6 +26,9 @@ class AssignmentDisplay extends Component {
     }
 
     switchAssignmentCompleteness = () => {
+        if (!this.state.complete) {
+            this.setState({edited: true});
+        }
         this.setState({complete: !this.state.complete});
     }
 
@@ -93,6 +96,7 @@ class AssignmentDisplay extends Component {
     }
 
     render() {
+        console.log(this.state)
         const { assignment, id } = this.props;
         const { assignment_title, due_date } = assignment;
         const className = this.state.complete ?
@@ -160,7 +164,14 @@ class AssignmentDisplay extends Component {
                                     <Button color="info" className="homework-card-button-right" disabled>submitting...</Button>
                             ) :
                             <Button className="homework-card-button-right" onClick={() => this.selectForEdit(id)}>Edit</Button>
-                        : null
+                        : this.state.edited ?
+                            (
+                                this.state.unSubmitted ?
+                                    <Button color="warning" className="homework-card-button-right" onClick={this.handleSubmitEdit}>Submit</Button> :
+                                    <Button color="info" className="homework-card-button-right" disabled>submitting...</Button>
+                            ) :
+                            // <Button className="homework-card-button-right" onClick={() => this.selectForEdit(id)}>Edit</Button>
+                            null
                     }
                 </CardFooter>
             </Card>
