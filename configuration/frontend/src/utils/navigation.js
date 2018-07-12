@@ -1,0 +1,1 @@
+import { browserHistory as History } from 'react-router';
