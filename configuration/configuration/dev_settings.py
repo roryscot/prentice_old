@@ -50,11 +50,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd party apps
     'webpack_loader',
     'knox',
-    'notes',
     # 'django-postman',
-    'assignments'
+
+    # Custom apps
+    'auth_api',
+    'assignments',
+    'notes',
+
 ]
 
 WEBPACK_LOADER = {
@@ -120,6 +126,9 @@ else:
             'PORT': env('DB_PORT'),
         }
     }
+#Substitute custom User model
+
+AUTH_USER_MODEL = 'auth_api.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
