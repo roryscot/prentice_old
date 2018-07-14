@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'auth_api',
     'assignments',
     'notes',
+    'standardized_tests'
 
 ]
 

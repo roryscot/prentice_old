@@ -15,9 +15,12 @@ class Assignment(models.Model):
     complete = models.BooleanField(default=False)
     due_date = models.DateField(default=timezone.now)
 
-    assignment_week_group = models.ForeignKey(AssignmentWeek, related_name="assignments", on_delete="cascade")
+    assignment_week = models.ForeignKey(AssignmentWeek, related_name="assignments", on_delete="cascade")
 
     development_points = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return "Task: {}".format(self.assignment_title)
+
+    class Meta:
+        ordering = ["due_date"]
