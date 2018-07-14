@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-
+echo ''
 echo "Starting server with production settings."
-python manage.py runserver
+echo ''
+python manage.py runsslserver

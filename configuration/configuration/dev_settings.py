@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'knox',
     # 'django-postman',
+    'sslserver',
 
     # Custom apps
     'auth_api',

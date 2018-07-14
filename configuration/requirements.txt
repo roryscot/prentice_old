@@ -4,6 +4,7 @@ cryptography==2.2.2
 Django==2.0.5
 django-environ==0.4.4
 django-rest-knox==3.1.4
+django-sslserver==0.20
 django-webpack-loader==0.6.0
 djangorestframework==3.8.2
 environ==1.0

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-echo 'Starting django development server...'
+echo ''
+echo 'Starting django ssl development server...'
+echo ''
 
-python manage.py runserver --settings=configuration.dev_settings
+python manage.py runsslserver --settings=configuration.dev_settings
