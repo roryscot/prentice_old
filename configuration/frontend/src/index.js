@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './assets/bootstrap-4.1.1-dist/css/bootstrap.min.css';
-import './assets/static/css/main.css';
-import './assets/static/css/custom.css';
+import './frontendAssets/bootstrap-4.1.1-dist/css/bootstrap.min.css';
+import './frontendAssets/static/css/main.css';
+import './frontendAssets/static/css/custom.css';
 
 import App from './App.jsx';
 

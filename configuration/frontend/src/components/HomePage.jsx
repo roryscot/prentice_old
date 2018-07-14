@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from '../../src/assets/images/Logo1.png';
+import logo from '../../src/frontendAssets/images/Logo1.png';
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 

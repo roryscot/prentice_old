@@ -1,6 +1,6 @@
 import React from 'react';
-import Expand from '../../assets/icons/expand1.png';
-import Collapse from '../../assets/icons/collapse.png';
+import Expand from '../../frontendAssets/icons/expand1.png';
+import Collapse from '../../frontendAssets/icons/collapse.png';
 
 export const DisplayAllSectionsToggler = (props) => (
     <span className="close" onClick={props.toggle}>

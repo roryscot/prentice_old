@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {mockStudent, mockTutor, mockInstitution} from '../assets/devMock/devMock';
+import {mockStudent, mockTutor, mockInstitution} from '../frontendAssets/devMock/devMock';
 
-import { mockStudentTest3} from '../assets/devMock/mockTestResults';
+import { mockStudentTest3} from '../frontendAssets/devMock/mockTestResults';
 
 import {Notes, TestsContainer} from './';
 
