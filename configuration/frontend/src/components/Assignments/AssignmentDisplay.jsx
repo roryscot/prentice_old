@@ -30,7 +30,7 @@ class AssignmentDisplay extends Component {
     }
 
     selectForEdit = (id) => {
-        console.warn(id)
+        console.warn(id);
         this.setState({
             editedDescription: this.state.description,
             updateAssignmentId: id,
@@ -100,7 +100,7 @@ class AssignmentDisplay extends Component {
             "incorrect-answer";
 
         const formattedDate = new Date(due_date).toLocaleDateString("en-US", dateTimeOptions);
-        console.log(this.state)
+        console.log(this.state);
         return (
             <Card className="homework-card">
                 <CardHeader>Due Date: <strong>{formattedDate}</strong></CardHeader>
@@ -120,14 +120,14 @@ class AssignmentDisplay extends Component {
                                 <Modal isOpen={this.state.editing}  className="test">
                                   <ModalHeader >{assignment_title}</ModalHeader>
                                   <ModalBody>
-                                        <textarea 
-                                            name="editedDescription" 
-                                            id="" 
+                                        <textarea
+                                            name="editedDescription"
+                                            id=""
                                             value={this.state.editedDescription}
-                                            
-                                            onChange={this.onChange} 
+
+                                            onChange={this.onChange}
                                             required
-                                 
+
                                         />
                                   </ModalBody>
                                   <ModalFooter>

@@ -13,12 +13,13 @@ class Login extends Component {
     email:"",
     password: "",
     confirmPassword: "",
+    accountType: null,
   }
 
   onSubmit = e => {
     e.preventDefault();
     console.warn("Validate data not implemented");
-    this.props.register(this.state.username, this.state.email, this.state.password);
+    this.props.register(this.state.username, this.state.email, this.state.password, this.state.accountType);
   }
 
   onChange = (e) =>{
@@ -46,15 +47,15 @@ class Login extends Component {
           }
           <div className="fields">
             <div className="field third">
-              <input type="radio" id="student" name="accountType"/>
+              <input type="radio" id="student" name="accountType" value="student" onChange={this.onChange} />
               <label htmlFor="student">Student</label>
             </div>
             <div className="field third">
-              <input type="radio" id="tutor" name="accountType"/>
+              <input type="radio" id="tutor" name="accountType" value="tutor" onChange={this.onChange} />
               <label htmlFor="tutor">Tutor</label>
             </div>
             <div className="field third">
-              <input type="radio" id="entrepreneur" name="accountType"/>
+              <input type="radio" id="entrepreneur" name="accountType" value="entrepreneur" onChange={this.onChange} />
               <label htmlFor="entrepreneur">Entrepreneur</label>
             </div>
             <AuthInput title="Email" name="email" type="email" onChange={this.onChange} className="field half"/>
@@ -88,7 +89,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: (username, email, password) => dispatch(auth.register(username, email, password)),
+    register: (username, email, password, accountType) => dispatch(auth.register(username, email, password, accountType)),
   };
 };
 

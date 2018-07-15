@@ -35,7 +35,7 @@ export const loadUser = () => {
 };
 
 export const login = (username, password) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     let headers = {"Content-Type": "application/json"};
     let body = JSON.stringify({username, password});
 
@@ -65,10 +65,11 @@ export const login = (username, password) => {
   };
 };
 
-export const register = (username, email, password) => {
-  return (dispatch, getState) => {
+export const register = (username, email, password, accountType) => {
+  return (dispatch) => {
+    console.log(accountType);
     let headers = {"Content-Type": "application/json"};
-    let body = JSON.stringify({username, email, password});
+    let body = JSON.stringify({username, email, password, accountType});
     return fetch("/api/auth/register/", {headers, body, method: "POST"})
       .then(res => {
         if (res.status < 500) {
