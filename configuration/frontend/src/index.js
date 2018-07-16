@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './frontendAssets/bootstrap-4.1.1-dist/css/bootstrap.min.css';
-import './frontendAssets/static/css/dimension.css';
-import './frontendAssets/static/css/custom.css';
-
-import App from './App.jsx';
+import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 
