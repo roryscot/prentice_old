@@ -28,7 +28,7 @@ env = environ.Env(
 )
 
 #Read environment variables
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env.prod'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
