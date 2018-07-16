@@ -4,13 +4,13 @@ from .dev_settings import *
 DEBUG = False
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "assets","bundles"),
+    os.path.join(BASE_DIR, "dist","bundles"),
 ]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "assets", "bundles"), ],
+        'DIRS': [os.path.join(BASE_DIR, "dist", "bundles"), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
