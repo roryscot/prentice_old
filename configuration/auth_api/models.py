@@ -20,9 +20,8 @@ class User(AbstractUser):
     institution = models.ForeignKey(Institution, related_name="users", on_delete=models.PROTECT, null=True)
 
 
-    @property
     def __str__(self):
-        "Returns the person's full name."
+        """Returns the person's full name."""
         return '%s %s' % (self.first_name, self.last_name)
 
 

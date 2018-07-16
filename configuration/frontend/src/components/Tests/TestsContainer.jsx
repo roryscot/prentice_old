@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import TestDisplay from './TestDisplay';
 import TestDisplay from './CollapsingTestDisplay';
-import { DisplayAllSectionsToggler } from './DisplaySectionsToggle';
 
 class TestsContainer extends Component {
-    // TODO: create a toggle that will expand tests, sections and notes
     static propTypes = {
         tests: PropTypes.arrayOf(PropTypes.shape({
             testNumber: PropTypes.string.isRequired,
@@ -33,7 +30,7 @@ class TestsContainer extends Component {
 
         return (
             <div>
-                <h2>Test Results</h2>
+                <h2 className="minor">Test Results</h2>
                 {
                     allTests.map(test => (
                         <TestDisplay

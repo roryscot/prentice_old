@@ -1,13 +1,32 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-
+import PropTypes from 'prop-types';
 import {Link, Redirect} from "react-router-dom";
 
 import {auth} from "../../redux/actions";
 
 import AuthInput from '../common/AuthInput';
 
-class Login extends Component {
+class Register extends Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    validateFormState: PropTypes.func.isRequired,
+    validateUsernameState: PropTypes.func.isRequired,
+    validateEmailState: PropTypes.func.isRequired,
+    validatePassword1State: PropTypes.func.isRequired,
+    validatePassword2State: PropTypes.func.isRequired,
+    username: PropTypes.string,
+    email: PropTypes.string,
+    password1: PropTypes.string,
+    password2: PropTypes.string,
+    hasTriedToSubmit: PropTypes.bool.isRequired,
+    signUpError: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.bool
+    ]).isRequired,
+    signUpPending: PropTypes.bool.isRequired
+  }
+
   state = {
     username: "",
     email:"",
@@ -93,4 +112,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

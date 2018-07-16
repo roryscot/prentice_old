@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import {auth} from "./redux/actions";
 import App_rentice from "./redux/reducers";
 
+//Main
 import {
   Dashboard,
   Contact,
@@ -22,6 +23,7 @@ import {
   ACTForm,
   Assignments,
   Profile,
+  Sidebar,
 } from './components';
 
 
@@ -59,8 +61,8 @@ class RootContainerComponent extends Component {
     return (
       <div className="is-preload">
           <div id="wrapper">
-          <Header id="header"/>
-          <hr/>
+            <Header id="header"/>
+            <hr/>
             <div id="main">
               <BrowserRouter>
                   <Switch>
@@ -77,7 +79,8 @@ class RootContainerComponent extends Component {
                   </Switch>
                 </BrowserRouter>
             </div>
-          <Footer id="footer"/>
+            <hr/>
+            <Footer id="footer"/>
           </div>
           <div id="bg"></div>
       </div>

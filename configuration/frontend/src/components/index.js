@@ -24,3 +24,5 @@ export {default as Assignments} from "./Assignments/Assignments";
 // Profile
 export {default as Profile} from "./profiles/AppProfile";
 
+// Secondary 
+export {default as Sidebar} from './secondary/SideBar';
