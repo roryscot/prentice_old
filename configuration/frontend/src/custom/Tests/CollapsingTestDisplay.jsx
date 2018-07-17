@@ -7,7 +7,7 @@ import { Collapse, Button, Table, Card } from 'reactstrap';
 import { questionListMaker } from '../../utils/helperFunctions';
 
 import { DisplayTestToggler } from './DisplaySectionsToggle';
-import IconTag from '../../components/common/IconTag';
+import IconTag from '../../custom/common/IconTag';
 import { TEST_ICON } from '../../frontendAssets/icons';
 
 class TestDisplay extends Component {

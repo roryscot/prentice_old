@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Tooltip} from 'reactstrap';
-import IconTag from '../../components/common/IconTag';
+import IconTag from '../../custom/common/IconTag';
 import { NOTES_ICON, STAR_ICON, TARGET_ICON, ALERT_ICON, QUESTION_ICON, TIME_ICON  } from '../../frontendAssets/icons';
 
 const MARKS = {

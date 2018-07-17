@@ -5,7 +5,7 @@ export {default as Login} from "./Login";
 export {default as NotFound} from "./NotFound";
 export {default as Contact} from "./Contact";
 export {default as Footer} from "./Footer";
-// export {default as Header} from "./Header/Header";
+export {default as Header} from "./Header/Header";
 export {default as PrivacyPolicy} from "./PrivacyPolicy";
 export {default as Register} from "./Register/Register.1";
 export {default as Dashboard} from "./Dashboard";

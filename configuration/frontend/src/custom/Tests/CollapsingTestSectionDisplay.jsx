@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 import TestSectionRow from './TestSectionRow';
-import IconTag from '../../components/common/IconTag';
+import IconTag from '../../custom/common/IconTag';
 import { DisplaySectionToggler } from './DisplaySectionsToggle';
 
 const TestSectionTable = (props) => {
