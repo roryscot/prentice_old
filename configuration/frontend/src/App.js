@@ -1,3 +1,31 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
+
+import { Provider, connect } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+
+import {auth} from "./redux/actions";
+import App_rentice from "./redux/reducers";
+
+//Main
+import {
+  // Dashboard,
+  Contact,
+  Footer,
+  Header,
+  Register,
+  HomePage,
+  About,
+  NotFound,
+  Login,
+  ACTForm,
+  Assignments,
+  Profile,
+  Sidebar,
+} from './components';
+
 import { STATE_LOGIN, STATE_SIGNUP } from 'components/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
@@ -19,9 +47,7 @@ import ProgressPage from 'pages/ProgressPage';
 import TablePage from 'pages/TablePage';
 import TypographyPage from 'pages/TypographyPage';
 import WidgetPage from 'pages/WidgetPage';
-import React from 'react';
 import componentQueries from 'react-component-queries';
-import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.css';
 
 const getBasename = () => {

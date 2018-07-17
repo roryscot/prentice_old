@@ -2,7 +2,6 @@ import React from 'react';
 import {mockStudent, mockTutor, mockInstitution} from '../frontendAssets/devMock/devMock';
 
 import { mockStudentTest3} from '../frontendAssets/devMock/mockTestResults';
-import { ToastMessageAnimated } from "react-toastr";
 
 import book from '../frontendAssets/images/book-1528240.jpg';
 import mc from '../frontendAssets/images/mc.jpeg';
@@ -59,10 +58,6 @@ class AboutPage extends React.Component {
 
                 <div id="examples">
                     <h3>Examples:</h3>
-                        <ToastMessageAnimated type="info" message="Get immediate results."
-                        ref={ref => container = ref}
-                        className="toast-top-right"
-                        />
                         <p>
                             Click the green {"'Expansion'"} symbol in the upper right corner of the visual tool to see the test results.
                         </p>
