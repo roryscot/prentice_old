@@ -103,6 +103,8 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "node scripts/start.js",
     "start": "npm-run-all -p watch-css start-js",
+    "lint": "eslint --ext=js --ext=jsx .",
+    "lint:fix": "eslint --ext=js --ext=jsx . --fix",
     "build": "npm run build-css && node scripts/build.js",
     "serve": "serve -s build",
     "deploy": "gh-pages -d build",
@@ -149,5 +151,7 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "license": "ISC",
+  "author": "Rory Dahl"
 }

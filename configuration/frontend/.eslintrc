@@ -1,11 +1,7 @@
 {
     "extends": [
         "react-app",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-
         "plugin:react/recommended",
-        "plugin:import/react"
     ],
     "plugins": [
       "react"

@@ -130,7 +130,7 @@ const DropdownPage = () => {
             <CardBody>
               <UncontrolledButtonDropdown className="m-1">
                 <DropdownToggle caret>
-                  This dropdown's menu is right-aligned
+                This {"dropdown's"} menu is left-aligned
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem header>Header</DropdownItem>
@@ -143,7 +143,7 @@ const DropdownPage = () => {
 
               <UncontrolledButtonDropdown className="m-1">
                 <DropdownToggle caret>
-                  This dropdown's menu is left-aligned
+                  This {"dropdown's"} menu is left-aligned
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem header>Header</DropdownItem>

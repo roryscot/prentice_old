@@ -141,14 +141,14 @@ const FormPage = () => {
                   <Label for="exampleFile">File</Label>
                   <Input type="file" name="file" />
                   <FormText color="muted">
-                    This is some placeholder block-level help text for the above
-                    input. It's a bit lighter and easily wraps to a new line.
+                    {"This is some placeholder block-level help text for the above \
+                    input. It's a bit lighter and easily wraps to a new line."}
                   </FormText>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" /> Option one is this and that—be sure
-                    to include why it's great
+                    <Input type="radio" /> {"Option one is this and that—be sure \
+                    to include why it's great"}
                   </Label>
                 </FormGroup>
                 <FormGroup check>
@@ -225,9 +225,9 @@ const FormPage = () => {
                   <Col sm={10}>
                     <Input type="file" name="file" />
                     <FormText color="muted">
-                      This is some placeholder block-level help text for the
-                      above input. It's a bit lighter and easily wraps to a new
-                      line.
+                      {"This is some placeholder block-level help text for the \
+                      above input. It's a bit lighter and easily wraps to a new \
+                      line."}
                     </FormText>
                   </Col>
                 </FormGroup>
@@ -238,8 +238,8 @@ const FormPage = () => {
                   <Col sm={10}>
                     <FormGroup check>
                       <Label check>
-                        <Input type="radio" name="radio2" /> Option one is this
-                        and that—be sure to include why it's great
+                        <Input type="radio" name="radio2" /> {"Option one is this \
+                        and that—be sure to include why it's great"}
                       </Label>
                     </FormGroup>
                     <FormGroup check>

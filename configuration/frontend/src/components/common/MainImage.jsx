@@ -7,7 +7,7 @@ const MainImage = (props) => {
 
     return (
         <span className="image main">
-        <hr/>
+            <hr/>
             <img src={src} alt={alt}/>
             <hr/>
         </span>

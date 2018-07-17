@@ -130,7 +130,7 @@ const InputGroupPage = () => {
             <CardHeader>Buttons / Dropdowns</CardHeader>
             <CardBody>
               <InputGroup>
-                <InputGroupAddon addonType="prepend"><Button>I'm a button</Button></InputGroupAddon>
+                <InputGroupAddon addonType="prepend"><Button>{"I'm a button"}</Button></InputGroupAddon>
                 <Input />
               </InputGroup>
               <br />
@@ -163,7 +163,7 @@ const InputGroupPage = () => {
                   </DropdownMenu>
                 </UncontrolledButtonDropdown>
                 <Input placeholder="and..." />
-                <InputGroupAddon addonType="append"><Button color="secondary">I'm a button</Button></InputGroupAddon>
+                <InputGroupAddon addonType="append"><Button color="secondary">{"I'm a button"}</Button></InputGroupAddon>
               </InputGroup>
             </CardBody>
           </Card>

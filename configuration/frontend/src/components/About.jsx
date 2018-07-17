@@ -14,17 +14,17 @@ const sampleTests = [mockStudentTest3];
 
 class AboutPage extends React.Component {
     componentDidMount() {
-        
-        
+        this.initialSuggestion;
+
     }
     initialSuggestion (container) {
         container.success(`Get immediate results!`, {
           closeButton: true,
-        })
+        });
     }
 
     render() {
-        let container; 
+        let container;
         const userName = mockStudent.name.firstName;
         return (
             <div id="about" className="article">
@@ -56,7 +56,7 @@ class AboutPage extends React.Component {
 
                 </div>
                 <hr />
-                
+
                 <div id="examples">
                     <h3>Examples:</h3>
                         <ToastMessageAnimated type="info" message="Get immediate results."

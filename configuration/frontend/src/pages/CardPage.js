@@ -44,8 +44,8 @@ const CardPage = () => {
             <CardBody>
               <CardTitle>Horizontal Image Card(Left)</CardTitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {"Some quick example text to build on the card title and make up \
+                the bulk of the card's content."}
               </CardText>
             </CardBody>
           </Card>
@@ -72,8 +72,8 @@ const CardPage = () => {
             <CardBody>
               <CardTitle>Card with image</CardTitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {"Some quick example text to build on the card title and make up \
+                the bulk of the card's content."}
               </CardText>
             </CardBody>
           </Card>
@@ -199,8 +199,8 @@ const CardPage = () => {
                   {color} card title
                 </CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  {"Some quick example text to build on the card title and make up \
+                  the bulk of the card's content."}
                 </CardText>
               </CardBody>
             </Card>
