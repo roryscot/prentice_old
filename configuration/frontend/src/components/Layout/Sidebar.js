@@ -132,13 +132,14 @@ class Sidebar extends React.Component {
                 {process.env.REACT_APP_NAME}
               </span>
             </SourceLink>
-
             <Nav navbar className="mr-2">
-          <Button outline onClick={this.props.handleSidebarControlButton}>
-            <MdClearAll size={15} />
-          </Button>
-        </Nav>
+              <Button outline onClick={this.props.handleSidebarControlButton}>
+                <MdClearAll size={15} />
+              </Button>
+            </Nav>
           </Navbar>
+          <hr />
+
           <Nav className={bem.e('nav-item')}>
             <SearchInput />
           </Nav>

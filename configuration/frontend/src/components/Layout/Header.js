@@ -114,7 +114,7 @@ class Header extends React.Component {
         <HeaderLink title="Profile" isActive={isActive}/>
         <HeaderLink title="Dashboard" isActive={isActive}/>
         <HeaderLink title="Test" isActive={isActive}/>
-        <NavItem >
+        <NavItem className="d-inline-flex">
           <NavLink href="#" onClick={this.logout}>
             <HeaderLinkTitle title="Logout" />
           </NavLink>
