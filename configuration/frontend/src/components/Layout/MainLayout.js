@@ -9,16 +9,13 @@ import NotificationSystem from 'react-notification-system';
 import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
 
 class MainLayout extends React.Component {
-  static isSidebarOpen() {
+  static isSidebarOpen = () => {
     return document
       .querySelector('.cr-sidebar')
       .classList.contains('cr-sidebar--open');
   }
-
-  componentWillReceiveProps({ breakpoint }) {
-    if (breakpoint !== this.props.breakpoint) {
-      this.checkBreakpoint(breakpoint);
-    }
+  state = {
+    sideBarIsOpen: true
   }
 
   componentDidMount() {
@@ -50,6 +47,11 @@ class MainLayout extends React.Component {
     }, 2500);
   }
 
+  componentWillReceiveProps({ breakpoint }) {
+    if (breakpoint !== this.props.breakpoint) {
+      this.checkBreakpoint(breakpoint);
+    }
+  }
   // close sidebar when
   handleContentClick = event => {
     // close sidebar if sidebar is open and screen size is less than `md`
@@ -77,7 +79,17 @@ class MainLayout extends React.Component {
     }
   }
 
-  openSidebar(openOrClose) {
+  handleSidebarControlButton = event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
+    this.setState({
+      sideBarIsOpen: !this.state.sideBarIsOpen
+    });
+  };
+
+  openSidebar = (openOrClose) => {
     if (openOrClose === 'open') {
       return document
         .querySelector('.cr-sidebar')
@@ -90,9 +102,12 @@ class MainLayout extends React.Component {
     const { children } = this.props;
     return (
       <main className="cr-app bg-light">
-        <Sidebar />
+        <Sidebar handleSidebarControlButton={this.handleSidebarControlButton}/>
         <Content fluid onClick={this.handleContentClick}>
-          <Header />
+          <Header
+            sideBarIsOpen={this.state.sideBarIsOpen} 
+            handleSidebarControlButton={this.handleSidebarControlButton}
+          />
           {children}
           <Footer />
         </Content>

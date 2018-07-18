@@ -221,7 +221,7 @@ export const chartJsGradient = {
               .color('#ffffff')
               .alpha(0)
               .rgbString(),
-            pointHoverBackgroundColor: '#fc5c7d',
+            pointHoverBackgroundColor: '#fc5c5c',
             pointHoverBorderColor: ChartJS.helpers
               .color('#000000')
               .alpha(0.2)

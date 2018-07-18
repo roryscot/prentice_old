@@ -47,7 +47,6 @@ import {
   ACTForm,
   Assignments,
   Profile,
-  Sidebar,
 } from 'custom';
 
 let store = createStore(App_rentice,

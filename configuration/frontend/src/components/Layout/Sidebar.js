@@ -2,6 +2,7 @@ import logo200Image from 'assets/img/logo/logo_200.png';
 import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
+import PropTypes from 'prop-types';
 import FaGithub from 'react-icons/lib/fa/github';
 import {
   MdAccountCircle,
@@ -13,6 +14,7 @@ import {
   MdExtension,
   MdGroupWork,
   MdInsertChart,
+  MdClearAll,
   MdKeyboardArrowDown,
   MdNotificationsActive,
   MdPages,
@@ -34,6 +36,7 @@ import {
   Navbar,
   NavItem,
   NavLink as BSNavLink,
+  Button,
 } from 'reactstrap';
 import bn from 'utils/bemnames';
 
@@ -90,6 +93,10 @@ const navItems = [
 const bem = bn.create('sidebar');
 
 class Sidebar extends React.Component {
+  static propTypes = {
+    handleSidebarControlButton: PropTypes.func.isRequired,
+  }
+
   state = {
     isOpenComponents: true,
     isOpenContents: true,
@@ -118,12 +125,18 @@ class Sidebar extends React.Component {
                 width="40"
                 height="30"
                 className="pr-2"
-                alt=""
+                alt="logo"
               />
               <span className="text-white">
-                Reduction <FaGithub />
+                {process.env.REACT_APP_NAME}
               </span>
             </SourceLink>
+
+            <Nav navbar className="mr-2">
+          <Button outline onClick={this.props.handleSidebarControlButton}>
+            <MdClearAll size={15} />
+          </Button>
+        </Nav>
           </Navbar>
           <Nav vertical>
             {navItems.map(({ to, name, exact, Icon }, index) => (

@@ -228,7 +228,7 @@ export const chartjs = {
         },
         {
           label: 'Expense for last year',
-          backgroundColor: '#fc5c7d',
+          backgroundColor: '#fc5c5c',
           stack: 'Expense',
           data: [30000, 80000, 50000, 100000, 60000, 40000, 90000],
         },
@@ -270,7 +270,7 @@ export const chartjs = {
           data: [20, 30, 40, 50, 60],
           backgroundColor: [
             '#6a82fb',
-            '#fc5c7d',
+            '#fc5c5c',
             '#45b649',
             '#00c9ff',
             '#ffd700',
@@ -308,8 +308,8 @@ export const chartjs = {
 
         {
           label: 'Revenue for last year',
-          borderColor: '#fc5c7d',
-          backgroundColor: '#fc5c7d',
+          borderColor: '#fc5c5c',
+          backgroundColor: '#fc5c5c',
           data: [0, 1300, 2200, 3400, 4600, 3500, 3000],
         },
       ],

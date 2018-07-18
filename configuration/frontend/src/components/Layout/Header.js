@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import bn from 'utils/bemnames';
 
@@ -52,6 +53,11 @@ const MdNotificationsActiveWithBadge = withBadge({
 })(MdNotificationsActive);
 
 class Header extends React.Component {
+  static propTypes = {
+    sideBarIsOpen: PropTypes.bool.isRequired,
+    handleSidebarControlButton: PropTypes.func.isRequired,
+  }
+
   state = {
     isOpenNotificationPopover: false,
     isNotificationConfirmed: false,
@@ -74,23 +80,21 @@ class Header extends React.Component {
     });
   };
 
-  handleSidebarControlButton = event => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
-  };
-
   render() {
     const { isNotificationConfirmed } = this.state;
-
     return (
       <Navbar light expand className={bem.b('bg-white')}>
-        <Nav navbar className="mr-2">
-          <Button outline onClick={this.handleSidebarControlButton}>
-            <MdClearAll size={25} />
-          </Button>
-        </Nav>
+          {
+            this.props.sideBarIsOpen ?
+              null :
+              (
+                <Nav navbar className="mr-2">
+                  <Button outline onClick={this.props.handleSidebarControlButton}>
+                    <MdClearAll size={15} />
+                  </Button>
+                </Nav>
+              )
+          }
         <Nav navbar>
           <SearchInput />
         </Nav>
