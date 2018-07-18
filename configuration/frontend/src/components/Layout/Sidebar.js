@@ -4,6 +4,7 @@ import SourceLink from 'components/SourceLink';
 import React from 'react';
 import PropTypes from 'prop-types';
 import FaGithub from 'react-icons/lib/fa/github';
+import SearchInput from 'components/SearchInput';
 import {
   MdAccountCircle,
   MdArrowDropDownCircle,
@@ -138,6 +139,9 @@ class Sidebar extends React.Component {
           </Button>
         </Nav>
           </Navbar>
+          <Nav className={bem.e('nav-item')}>
+            <SearchInput />
+          </Nav>
           <Nav vertical>
             {navItems.map(({ to, name, exact, Icon }, index) => (
               <NavItem key={index} className={bem.e('nav-item')}>

@@ -24,7 +24,7 @@ import {
   Assignments,
   Profile,
   Sidebar,
-} from './components';
+} from '../custom/index';
 
 
 let store = createStore(App_rentice,

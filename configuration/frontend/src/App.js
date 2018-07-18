@@ -70,14 +70,18 @@ class RootContainerComponent extends Component {
     this.props.loadUser();
   }
 
-  PrivateRoute = ({component: ChildComponent, ...rest}) => {
+  PrivateRoute = ({component: ChildComponent, layout: Layout, ...rest}) => {
     return <Route {...rest} render={props => {
       if (this.props.auth.isLoading) {
         return <em>Loading...</em>;
       } else if (!this.props.auth.isAuthenticated) {
         return <Redirect to="/login" />;
       } else {
-        return <ChildComponent {...props} />;
+        return (
+          <Layout>
+            <ChildComponent {...props} />
+          </Layout>
+        );
       }
     }} />;
   }
@@ -114,6 +118,12 @@ class RootContainerComponent extends Component {
       <BrowserRouter basename={getBasename()}>
         <GAListener>
           <Switch>
+          <LayoutRoute
+              exact
+              path="/"
+              layout={MainLayout}
+              component={HomePage}
+            />
             <LayoutRoute
               exact
               path="/login"
@@ -136,11 +146,18 @@ class RootContainerComponent extends Component {
               layout={MainLayout}
               component={AuthModalPage}
             />
-            <LayoutRoute
+            
+            <PrivateRoute
               exact
-              path="/"
+              path="/dashboard"
               layout={MainLayout}
               component={DashboardPage}
+            />
+            <PrivateRoute
+              exact
+              path="/profile"
+              layout={MainLayout}
+              component={Profile}
             />
             <LayoutRoute
               exact
@@ -285,12 +302,12 @@ class App extends React.Component {
       //         layout={MainLayout}
       //         component={AuthModalPage}
       //       />
-      //       <LayoutRoute
-      //         exact
-      //         path="/"
-      //         layout={MainLayout}
-      //         component={DashboardPage}
-      //       />
+            // <LayoutRoute
+            //   exact
+            //   path="/"
+            //   layout={MainLayout}
+            //   component={DashboardPage}
+            // />
       //       <LayoutRoute
       //         exact
       //         path="/buttons"
@@ -385,6 +402,10 @@ class App extends React.Component {
       //     </Switch>
       //   </GAListener>
       // </BrowserRouter>
+
+      <Provider store={store}>
+        <RootContainer />
+      </Provider>
     );
   }
 }
@@ -413,15 +434,15 @@ const query = ({ width }) => {
   return { breakpoint: 'xs' };
 };
 
-// export default componentQueries(query)(App);
-let AppContainer = componentQueries(query)(App);
+export default componentQueries(query)(App);
+// let AppContainer = componentQueries(query)(App);
 
-export default class Prentice extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <RootContainer />
-      </Provider>
-    );
-  }
-}
+// export default class Prentice extends Component {
+//   render() {
+//     return (
+//       <Provider store={store}>
+//         <RootContainer />
+//       </Provider>
+//     );
+//   }
+// }
