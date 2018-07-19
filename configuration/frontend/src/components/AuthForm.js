@@ -1,8 +1,8 @@
 import logo200Image from 'assets/img/logo/logo_200.png';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
-import { Control, Form, actions } from 'react-redux-form';
+import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
+// import { Control, Form, actions } from 'react-redux-form';
 
 class AuthForm extends React.Component {
   get isLogin() {
@@ -64,10 +64,14 @@ class AuthForm extends React.Component {
         <FormGroup>
           <Label for={usernameLabel}>{usernameLabel}</Label>
           <Input {...usernameInputProps} onChange={onChange}/>
+          {/* <Control.text model="user.username" id="user.username" /> */}
+
         </FormGroup>
         <FormGroup>
           <Label for={passwordLabel}>{passwordLabel}</Label>
           <Input {...passwordInputProps} onChange={onChange}/>
+          {/* <Control.text model="user.password" id="user.password" /> */}
+
         </FormGroup>
         {this.isSignup && (
           <FormGroup>
