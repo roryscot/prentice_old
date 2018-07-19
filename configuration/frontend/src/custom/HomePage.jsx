@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from 'assets/img/logo/logo_200.png';
+import logo from 'assets/img/logo/LogoMark.png';
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
@@ -11,7 +11,7 @@ class HomePage extends Component {
         }
         return (
             <div>
-                <img src={logo} alt="logo" className="logo img-fluid text-center"/>
+                <img src={logo} alt="LogoMakr https://logomakr.com/6CmyNn" className="logo img-fluid text-center"/>
             </div>
         );
     }
