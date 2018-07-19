@@ -1,7 +1,8 @@
 import logo200Image from 'assets/img/logo/logo_200.png';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Control, Form, actions } from 'react-redux-form';
 
 class AuthForm extends React.Component {
   get isLogin() {
@@ -71,13 +72,23 @@ class AuthForm extends React.Component {
         {this.isSignup && (
           <FormGroup>
             <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
-            <Input {...confirmPasswordInputProps} onChange={onChange}/>
           </FormGroup>
         )}
         <FormGroup check>
           <Label check>
-            <Input type="checkbox" />{' '}
-            {this.isSignup ? 'Agree the terms and policy' : 'Remember me'}
+            {
+              this.isSignup ? (
+                <div>
+                  <Input type="checkbox" name="terms" id="terms"/>{' '}
+                    Agree the terms and policy
+                </div>
+              ) : (
+                  <div>
+                    <Input type="checkbox" name="remember" id="remember"/>{' '}
+                      Remember me
+                  </div>
+              )
+            }
           </Label>
         </FormGroup>
         <hr />

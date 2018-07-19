@@ -8,7 +8,7 @@ import { questionListMaker } from '../../utils/helperFunctions';
 
 import { DisplayTestToggler } from './DisplaySectionsToggle';
 import IconTag from '../../custom/common/IconTag';
-import { TEST_ICON } from '../../frontendAssets/icons';
+import { TEST_ICON } from 'assets/icons';
 
 class TestDisplay extends Component {
     static propTypes = {

@@ -50,6 +50,7 @@
     "react-infinite-calendar": "^2.3.1",
     "react-notification-system": "^0.2.17",
     "react-redux": "^5.0.7",
+    "react-redux-form": "^1.16.9",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-simple-maps": "^0.12.1",

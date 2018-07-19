@@ -3,7 +3,7 @@ import PropTypes from 'utils/propTypes';
 
 import classNames from 'classnames';
 
-import userImage from 'assets/img/users/100_4.jpg';
+import defaultUserImage from 'assets/img/users/anon_user.jpg';
 
 const Avatar = ({
   rounded,
@@ -40,7 +40,7 @@ Avatar.defaultProps = {
   rounded: false,
   circle: true,
   size: 40,
-  src: userImage,
+  src: defaultUserImage,
   style: {},
 };
 

@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import {auth} from "./redux/actions";
-import App_rentice from "./redux/reducers";
+import rootReducer from "./redux/reducers";
 
 import { STATE_LOGIN, STATE_SIGNUP } from 'components/AuthForm';
 import GAListener from 'components/GAListener';
@@ -49,7 +49,7 @@ import {
   Profile,
 } from 'custom';
 
-let store = createStore(App_rentice,
+let store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk));
 

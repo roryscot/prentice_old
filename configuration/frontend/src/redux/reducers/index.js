@@ -2,12 +2,13 @@ import { combineReducers } from 'redux';
 import notes from "./notes";
 import auth from "./auth";
 import assignments from "./assignments";
+import myForms from './formValidation';
 
-
-const App_rentice = combineReducers({
+const rootReducer = combineReducers({
   notes,
   auth,
   assignments,
+  myForms,
 });
 
-export default App_rentice;
+export default rootReducer;

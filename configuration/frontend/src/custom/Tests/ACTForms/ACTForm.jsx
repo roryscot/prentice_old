@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { CONSTANTS } from '../../../frontendAssets/devMock/devMock';
+import { CONSTANTS } from 'demos/devMock/devMock';
 
 class ACTForm extends Component {
     render() {

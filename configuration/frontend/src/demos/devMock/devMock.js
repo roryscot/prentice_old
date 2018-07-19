@@ -1,7 +1,7 @@
-import logo from '../images/Logo1.png'; //url: https://logomakr.com/3kgWwe
+import logo from 'assets/img/logo/logo_200.png'; //url: https://logomakr.com/3kgWwe
 // logomakr.com/6E4ThA
 
-import { ENGLISH_ICON, MATHEMATICS_ICON, READING_ICON, SCIENCE_ICON, STAR_ICON, TARGET_ICON, ALERT_ICON, QUESTION_ICON, TIME_ICON } from '../icons';
+import { ENGLISH_ICON, MATHEMATICS_ICON, READING_ICON, SCIENCE_ICON, STAR_ICON, TARGET_ICON, ALERT_ICON, QUESTION_ICON, TIME_ICON } from 'assets/icons';
 export const CONSTANTS = {
     TEST_TYPE: "ACT",
     TEST_SECTIONS: {

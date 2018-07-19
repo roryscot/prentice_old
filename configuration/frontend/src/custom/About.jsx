@@ -1,10 +1,10 @@
 import React from 'react';
-import {mockStudent, mockTutor, mockInstitution} from '../frontendAssets/devMock/devMock';
+import {mockStudent, mockTutor, mockInstitution} from 'demos/devMock/devMock';
 
-import { mockStudentTest3} from '../frontendAssets/devMock/mockTestResults';
+import { mockStudentTest3} from 'demos/devMock/mockTestResults';
 
-import book from '../frontendAssets/images/book-1528240.jpg';
-import mc from '../frontendAssets/images/mc.jpeg';
+import book from 'assets/img/book-1528240.jpg';
+import mc from 'assets/img/mc.jpg';
 import {Notes, TestsContainer} from './';
 import MainImage from './common/MainImage';
 
