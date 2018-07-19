@@ -62,13 +62,19 @@ class Header extends React.Component {
   static propTypes = {
     sideBarIsOpen: PropTypes.bool.isRequired,
     handleSidebarControlButton: PropTypes.func.isRequired,
-    // auth: PropTypes.shape({
-      isAuthenticated: PropTypes.bool.isRequired,
-      user: PropTypes.object,
-    // }),
+    isAuthenticated: PropTypes.bool.isRequired,
+    user: PropTypes.object,
     username: PropTypes.string,
     logOut: PropTypes.func.isRequired,
     history: PropTypes.object,
+  }
+
+  static defaultProps = {
+    user: {
+      email: "example@email.com",
+      id: 0,
+      username: "Guest",
+    }
   }
 
   state = {
@@ -99,31 +105,32 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const { isNotificationConfirmed } = this.state;
     const { user, isAuthenticated } = this.props;
 
     const guestLinks = (
-          <Nav className="mr-2" navbar>
+          <Nav className="mr-2">
             <HeaderLink title="Register" isActive={isActive}/>
             <HeaderLink title="Login" isActive={isActive}/>
           </Nav>
     );
 
     const authenticatedLinks = (
-      <Nav className="mr-2" navbar>
+      <Nav className="mr-2">
         <HeaderLink title="Profile" isActive={isActive}/>
         <HeaderLink title="Dashboard" isActive={isActive}/>
         <HeaderLink title="Test" isActive={isActive}/>
         <NavItem className="d-inline-flex">
           <NavLink href="#" onClick={this.logout}>
-            <HeaderLinkTitle title="Logout" />
+            Logout
           </NavLink>
         </NavItem>
       </Nav>
     );
 
     const generalLinks = (
-      <Nav className="mr-2" navbar>
+      <Nav className="mr-2">
         <HeaderLink title="About" isActive={isActive}/>
         <HeaderLink title="Contact" isActive={isActive}/>
       </Nav>
@@ -142,13 +149,6 @@ class Header extends React.Component {
                 </Nav>
               )
           }
-          <Nav>
-            <NavItem className={isActive('/')}>
-              <NavLink href={'/'} >
-                <HeaderLinkTitle title="App~rentice" />
-              </NavLink>
-            </NavItem>
-          </Nav>
           {generalLinks}
           {
             isAuthenticated ?
@@ -156,6 +156,80 @@ class Header extends React.Component {
               guestLinks
           }
           { isAuthenticated ?
+              <Nav navbar className={bem.e('nav-right')}>
+              <NavItem className="d-inline-flex">
+                <NavLink id="Popover1" className="position-relative">
+                  {isNotificationConfirmed ? (
+                    <MdNotificationsNone
+                      size={25}
+                      className="text-secondary can-click"
+                      onClick={this.toggleNotificationPopover}
+                    />
+                  ) : (
+                    <MdNotificationsActiveWithBadge
+                      size={25}
+                      className="text-secondary can-click animated swing"
+                      onClick={this.toggleNotificationPopover}
+                    />
+                  )}
+                </NavLink>
+                <Popover
+                  placement="bottom"
+                  isOpen={this.state.isOpenNotificationPopover}
+                  toggle={this.toggleNotificationPopover}
+                  target="Popover1">
+                  <PopoverBody>
+                    <Notifications notificationsData={user.notificationsData} />
+                  </PopoverBody>
+                </Popover>
+              </NavItem>
+              
+              <NavItem>
+                <NavLink id="Popover2">
+                  <Avatar
+                    onClick={this.toggleUserCardPopover}
+                    className="can-click"
+                  />
+                </NavLink>
+                <Popover
+                  placement="bottom-end"
+                  isOpen={this.state.isOpenUserCardPopover}
+                  toggle={this.toggleUserCardPopover}
+                  target="Popover2"
+                  className="p-0 border-0"
+                  style={{ minWidth: 250 }}>
+                  <PopoverBody className="p-0 border-light">
+                    <UserCard
+                      title={user.username}
+                      subtitle={user.email}
+                      text={"Helpful text goes here"}
+                      className="border-light">
+                      <ListGroup flush>
+                        <NavLink to={'/profile'} tag="button" action className="border-light">
+                          <MdPersonPin /> Profile
+                        </NavLink>
+                        <NavLink to={'/stats'} tag="button" action className="border-light">
+                          <MdInsertChart /> Stats
+                        </NavLink>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <MdMessage /> Messages
+                        </ListGroupItem>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <MdSettingsApplications /> Settings
+                        </ListGroupItem>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <MdHelp /> Help
+                        </ListGroupItem>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <MdExitToApp /> Signout
+                        </ListGroupItem>
+                      </ListGroup>
+                    </UserCard>
+                  </PopoverBody>
+                </Popover>
+              </NavItem>
+            </Nav> :
+
             <Nav navbar className={bem.e('nav-right')}>
               <NavItem className="d-inline-flex">
                 <NavLink id="Popover1" className="position-relative">
@@ -228,15 +302,13 @@ class Header extends React.Component {
                   </PopoverBody>
                 </Popover>
               </NavItem>
-            </Nav> :
-            null
+            </Nav>
         }
       </Navbar>
     );
   }
 }
 
-// export default Header;
 function mapStateToProps(state) {
   return {
     user: state.auth.user,

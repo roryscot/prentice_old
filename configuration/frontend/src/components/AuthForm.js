@@ -62,16 +62,16 @@ class AuthForm extends React.Component {
         )}
         <FormGroup>
           <Label for={usernameLabel}>{usernameLabel}</Label>
-          <Input {...usernameInputProps} onChange={this.props.onChange}/>
+          <Input {...usernameInputProps} onChange={onChange}/>
         </FormGroup>
         <FormGroup>
           <Label for={passwordLabel}>{passwordLabel}</Label>
-          <Input {...passwordInputProps} onChange={this.props.onChange}/>
+          <Input {...passwordInputProps} onChange={onChange}/>
         </FormGroup>
         {this.isSignup && (
           <FormGroup>
             <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
-            <Input {...confirmPasswordInputProps} onChange={this.props.onChange}/>
+            <Input {...confirmPasswordInputProps} onChange={onChange}/>
           </FormGroup>
         )}
         <FormGroup check>

@@ -5,7 +5,7 @@ import {
     NavLink,
 } from 'reactstrap';
 
-import HeaderLinkTitle from './HeaderLinkTitle';
+// import HeaderLinkTitle from './HeaderLinkTitle';
 
 import { isActive } from '../../utils/LinkUtils';
 
@@ -17,7 +17,7 @@ const HeaderLink = (props) => {
     return (
       <NavItem className={isActive(`/${url}`)}>
         <NavLink href={`/${url}`}>
-          <HeaderLinkTitle title={props.title} />
+          {props.title}
         </NavLink>
       </NavItem>
     );
