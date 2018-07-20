@@ -32,7 +32,7 @@ import Avatar from 'components/Avatar';
 import { UserCard } from 'components/Card';
 import Notifications from 'components/Notifications';
 import HeaderLink from 'custom/Header/HeaderLink';
-import HeaderLinkTitle from 'custom/Header/HeaderLinkTitle';
+import Loading from 'custom/common/Loading';
 
 import { connect } from 'react-redux';
 import { auth } from 'redux/actions';
@@ -59,10 +59,6 @@ const MdNotificationsActiveWithBadge = withBadge({
 })(MdNotificationsActive);
 
 class Header extends React.Component {
-  static defaultProps = {
-    isAuthenticated: false
-  }
-
   static propTypes = {
     sideBarIsOpen: PropTypes.bool.isRequired,
     handleSidebarControlButton: PropTypes.func.isRequired,
@@ -71,6 +67,7 @@ class Header extends React.Component {
     username: PropTypes.string,
     logOut: PropTypes.func.isRequired,
     history: PropTypes.object,
+    loading: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
@@ -109,9 +106,8 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const { isNotificationConfirmed } = this.state;
-    const { user, isAuthenticated } = this.props;
+    const { user, isAuthenticated, loading } = this.props;
 
     const guestLinks = (
           <Nav className="mr-2">
@@ -159,6 +155,7 @@ class Header extends React.Component {
               authenticatedLinks :
               guestLinks
           }
+          {loading && <Loading interval={100} dots={50}/>}
           { isAuthenticated ?
               <Nav navbar className={bem.e('nav-right')}>
               <NavItem className="d-inline-flex">
@@ -314,9 +311,13 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state.ajaxCallsInProgress)
+
   return {
     user: state.auth.user,
     isAuthenticated: state.auth.isAuthenticated,
+    // loading: state.ajaxCallsInProgress > 0,
+    loading: true
   };
 }
 

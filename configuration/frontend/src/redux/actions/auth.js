@@ -1,6 +1,7 @@
+import {beginAjaxCall, ajaxCallError} from './ajaxStatus';
 import {
   USER_LOADING,
-  USER_LOADED,
+  USER_LOADED_SUCCESS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REGISTRATION_SUCCESS,
@@ -35,7 +36,7 @@ export const loadUser = () => {
         })
         .then(res => {
           if (res.status === 200) {
-            dispatch({type: USER_LOADED, user: res.data });
+            dispatch({type: USER_LOADED_SUCCESS, user: res.data });
             return res.data;
           } else if (res.status >= 400 && res.status < 500) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});

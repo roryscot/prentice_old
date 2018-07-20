@@ -1,4 +1,4 @@
-import { ADD_ASSIGNMENT, UPDATE_ASSIGNMENT, DELETE_ASSIGNMENT, FETCH_ASSIGNMENTS, AUTHENTICATION_ERROR } from '../actionTypes';
+import { ADD_ASSIGNMENT_SUCCESS, UPDATE_ASSIGNMENT_SUCCESS, DELETE_ASSIGNMENT_SUCCESS, FETCH_ASSIGNMENTS_SUCCESS, AUTHENTICATION_ERROR } from '../actionTypes';
 
 
 export const fetchAssignments = () => {
@@ -25,7 +25,7 @@ export const fetchAssignments = () => {
           if (res.status === 200) {
           console.log("DATA",res.data);
 
-            return dispatch({type: FETCH_ASSIGNMENTS, assignments: res.data});
+            return dispatch({type: FETCH_ASSIGNMENTS_SUCCESS, assignments: res.data});
           } else if (res.status === 401 || res.status === 403) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
@@ -57,7 +57,7 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 201) {
-            return dispatch({type: ADD_ASSIGNMENT, assignment: res.data});
+            return dispatch({type: ADD_ASSIGNMENT_SUCCESS, assignment: res.data});
           } else if (res.status === 401 || res.status === 403) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
@@ -92,7 +92,7 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 200) {
-            return dispatch({type: UPDATE_ASSIGNMENT, assignment: res.data, index});
+            return dispatch({type: UPDATE_ASSIGNMENT_SUCCESS, assignment: res.data, index});
           } else if (res.status === 401 || res.status === 403) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
@@ -128,7 +128,7 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 204) {
-            return dispatch({type: DELETE_ASSIGNMENT, index});
+            return dispatch({type: DELETE_ASSIGNMENT_SUCCESS, index});
           } else if (res.status === 401 || res.status === 403) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;

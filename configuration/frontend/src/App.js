@@ -57,9 +57,9 @@ import {
   DemoTestsPage,
 } from 'demos';
 
-let store = createStore(rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk));
+import configureStore from 'redux/store/configureStore';
+
+let store = configureStore();
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -78,8 +78,7 @@ class RootContainerComponent extends Component {
     this.props.loadUser();
   }
 
-  PrivateRoute = ({component: ChildComponent, layout: Layout, path: path, ...rest}) => {
-    console.log(path)
+  PrivateRoute = ({component: ChildComponent, layout: Layout, path, ...rest}) => {
     return <Route {...rest} render={props => {
       if (this.props.auth.isLoading) {
         return <em>Loading...</em>;
@@ -283,6 +282,7 @@ class RootContainerComponent extends Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
+    loading: state.ajaxCallsInProgress > 0
   };
 };
 
@@ -306,6 +306,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 const query = ({ width }) => {
   if (width < 575) {

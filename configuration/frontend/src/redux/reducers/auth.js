@@ -1,6 +1,6 @@
 import {
   USER_LOADING,
-  USER_LOADED,
+  USER_LOADED_SUCCESS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REGISTRATION_SUCCESS,
@@ -9,7 +9,7 @@ import {
   AUTHENTICATION_ERROR,
 } from '../actionTypes';
 
-import initialState from './initialState';
+import initialState from '../initialState';
 
 
   export default function auth(state=initialState.auth, action) {
@@ -19,7 +19,7 @@ import initialState from './initialState';
       case USER_LOADING:
         return {...state, isLoading: true};
 
-      case USER_LOADED:
+      case USER_LOADED_SUCCESS:
         return {...state, isAuthenticated: true, isLoggedIn: true, isLoading: false, user: action.user};
 
       case LOGIN_SUCCESS:
