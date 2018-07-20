@@ -1,4 +1,4 @@
-import actions from '../constants';
+import { ADD_NOTE, UPDATE_NOTE, DELETE_NOTE, FETCH_NOTES } from '../actionTypes';
 
 import initialState from './initialState';
 
@@ -7,20 +7,20 @@ export default function handleNotes(state=initialState.notes, action) {
 
   switch (action.type) {
 
-    case actions.ADD_NOTE:
+    case ADD_NOTE:
       return [...state, action.note];
 
-    case actions.UPDATE_NOTE:
+    case UPDATE_NOTE:
       let noteToUpdate = noteList[action.index];
       noteToUpdate.text = action.note.text;
       noteList.splice(action.index, 1, noteToUpdate);
       return noteList;
 
-    case actions.DELETE_NOTE:
+    case DELETE_NOTE:
     noteList.splice(action.index, 1);
     return noteList;
 
-    case actions.FETCH_NOTES:
+    case FETCH_NOTES:
       return [...state, ...action.notes];
 
     default:

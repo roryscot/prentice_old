@@ -1,8 +1,4 @@
-import actions from '../constants';
-const {
-  FETCH_ASSIGNMENTS
-} = actions;
-
+import { ADD_ASSIGNMENT, UPDATE_ASSIGNMENT, DELETE_ASSIGNMENT, FETCH_ASSIGNMENTS, AUTHENTICATION_ERROR } from '../actionTypes';
 
 
 export const fetchAssignments = () => {
@@ -31,7 +27,7 @@ export const fetchAssignments = () => {
 
             return dispatch({type: FETCH_ASSIGNMENTS, assignments: res.data});
           } else if (res.status === 401 || res.status === 403) {
-            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
           }
         });
@@ -61,9 +57,9 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 201) {
-            return dispatch({type: 'ADD_ASSIGNMENT', assignment: res.data});
+            return dispatch({type: ADD_ASSIGNMENT, assignment: res.data});
           } else if (res.status === 401 || res.status === 403) {
-            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
           }
         });
@@ -96,9 +92,9 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 200) {
-            return dispatch({type: 'UPDATE_ASSIGNMENT', assignment: res.data, index});
+            return dispatch({type: UPDATE_ASSIGNMENT, assignment: res.data, index});
           } else if (res.status === 401 || res.status === 403) {
-            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
           }
         });
@@ -132,64 +128,11 @@ export const fetchAssignments = () => {
         })
         .then(res => {
           if (res.status === 204) {
-            return dispatch({type: 'DELETE_ASSIGNMENT', index});
+            return dispatch({type: DELETE_ASSIGNMENT, index});
           } else if (res.status === 401 || res.status === 403) {
-            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
           }
         });
     };
   };
-
-  // Group Lists
-
-  // export const addGroupList = text => {
-  //   return (dispatch, getState) => {
-  //     let headers = {"Content-Type": "application/json"};
-  //     let {token} = getState().auth;
-
-  //     if (token) {
-  //       headers["Authorization"] = `Token ${token}`;
-  //     }
-  //     let body = JSON.stringify({
-  //       groups: [],
-  //       group_list_title: this.state.newGrouplistTitle
-  //   });
-
-  //     let body = JSON.stringify({text, });
-  //     return fetch("/api/assignments/", {headers, method: "POST", body})
-  //       .then(res => {
-  //         if (res.status < 500) {
-  //           return res.json().then(data => {
-  //             return {status: res.status, data};
-  //           });
-  //         } else {
-  //           console.log("Server Error!");
-  //           throw res;
-  //         }
-  //       })
-  //       .then(res => {
-  //         if (res.status === 201) {
-  //           return dispatch({type: 'ADD_ASSIGNMENT', assignment: res.data});
-  //         } else if (res.status === 401 || res.status === 403) {
-  //           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
-  //           throw res.data;
-  //         }
-  //       });
-  //   };
-  // };
-
-
-  //       if (this.state.newGrouplistTitle.length) {
-  //           fetch("todo/grouplists/", {headers, body, method: "POST"})
-  //               .then(res=>{
-  //                   if (res.status < 500) {
-  //                       return res.json().then(data => {
-  //                           return this._fetchGroupList();
-  //                       });
-  //                   } else {
-  //                       console.log("Server Error!");
-  //                       throw res;
-  //                   }
-  //               });
-  //       }

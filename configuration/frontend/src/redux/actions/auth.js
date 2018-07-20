@@ -1,6 +1,17 @@
+import {
+  USER_LOADING,
+  USER_LOADED,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAIL,
+  LOGOUT_SUCCESS,
+  AUTHENTICATION_ERROR,
+} from '../actionTypes';
+
 export const loadUser = () => {
     return (dispatch, getState) => {
-      dispatch({type: "USER_LOADING"});
+      dispatch({type: USER_LOADING});
 
       const token = getState().auth.token;
 
@@ -24,10 +35,10 @@ export const loadUser = () => {
         })
         .then(res => {
           if (res.status === 200) {
-            dispatch({type: 'USER_LOADED', user: res.data });
+            dispatch({type: USER_LOADED, user: res.data });
             return res.data;
           } else if (res.status >= 400 && res.status < 500) {
-            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            dispatch({type: AUTHENTICATION_ERROR, data: res.data});
             throw res.data;
           }
         });
@@ -52,13 +63,13 @@ export const login = (username, password) => {
       })
       .then(res => {
         if (res.status === 200) {
-          dispatch({type: 'LOGIN_SUCCESS', data: res.data });
+          dispatch({type: LOGIN_SUCCESS, data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+          dispatch({type: AUTHENTICATION_ERROR, data: res.data});
           throw res.data;
         } else {
-          dispatch({type: "LOGIN_FAIL", data: res.data});
+          dispatch({type: LOGIN_FAIL, data: res.data});
           throw res.data;
         }
       });
@@ -83,13 +94,13 @@ export const register = (username, email, password, accountType) => {
       })
       .then(res => {
         if (res.status === 200) {
-          dispatch({type: 'REGISTRATION_SUCCESS', data: res.data });
+          dispatch({type: REGISTRATION_SUCCESS, data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+          dispatch({type: AUTHENTICATION_ERROR, data: res.data});
           throw res.data;
         } else {
-          dispatch({type: "REGISTRATION_FAIL", data: res.data});
+          dispatch({type: REGISTRATION_FAIL, data: res.data});
           throw res.data;
         }
       });
@@ -115,10 +126,10 @@ export const logout = () => {
       })
       .then(res => {
         if (res.status === 204) {
-          dispatch({type: 'LOGOUT_SUCCESS'});
+          dispatch({type: LOGOUT_SUCCESS});
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+          dispatch({type: AUTHENTICATION_ERROR, data: res.data});
           throw res.data;
         }
       });
