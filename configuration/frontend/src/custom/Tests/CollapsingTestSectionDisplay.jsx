@@ -9,14 +9,14 @@ import {
 import TestSectionRow from './TestSectionRow';
 import IconTag from '../../custom/common/IconTag';
 import { DisplaySectionToggler } from './DisplaySectionsToggle';
+import { TEST_STYLES } from 'styles/cssConstants';
+
 
 const TestSectionTable = (props) => {
     const {owner, allTestSectionsDisplayed, questions, studentAnswers, correctAnswers, themes, marks, tutornotes} = props;
     return (
-        allTestSectionsDisplayed ?
-            (
-                    <Table hover size="sm">
-                        <thead>
+                    <Table hover className={TEST_STYLES.TABLE_BORDERED} size="sm">
+                        <thead >
                             <tr>
                                 <th>#</th>
                                 <th>{owner}{"'s Answer"}</th>
@@ -30,7 +30,7 @@ const TestSectionTable = (props) => {
                         {
                             questions.map(q => {
                                 const verisimilitude = studentAnswers[q] === correctAnswers[q] ?
-                                    "correct-answer" : "incorrect-answer";
+                                    TEST_STYLES.CORRECT_ANSWER : TEST_STYLES.INCORRECT_ANSWER;
 
                                 return (
                                     <TestSectionRow
@@ -60,8 +60,6 @@ const TestSectionTable = (props) => {
                             </tr>
                         </tfoot>
                     </Table>
-                ) :
-                    null
     );
 };
 

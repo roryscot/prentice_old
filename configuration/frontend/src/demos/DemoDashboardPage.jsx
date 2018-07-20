@@ -52,7 +52,6 @@ import { AnnouncementCard, TodosCard } from 'components/Card';
 
 import { NumberWidget, IconWidget } from 'components/Widget';
 
-import MapWithBubbles from 'components/MapWithBubbles';
 import HorizontalAvatarList from 'components/HorizontalAvatarList';
 
 const today = new Date();

@@ -54,6 +54,7 @@ import {
   DemoDashboardPage,
   // DemoProfile,
   DemoStatsPage,
+  DemoTestsPage,
 } from 'demos';
 
 let store = createStore(rootReducer,
@@ -78,6 +79,7 @@ class RootContainerComponent extends Component {
   }
 
   PrivateRoute = ({component: ChildComponent, layout: Layout, path: path, ...rest}) => {
+    console.log(path)
     return <Route {...rest} render={props => {
       if (this.props.auth.isLoading) {
         return <em>Loading...</em>;
@@ -124,24 +126,12 @@ class RootContainerComponent extends Component {
                 <AuthPage {...props} authState={STATE_SIGNUP} />
               )}
             />
+
             <LayoutRoute
               exact
               path="/login-modal"
               layout={MainLayout}
               component={AuthModalPage}
-            />
-            
-            <LayoutRoute
-              exact
-              path="/demo/dashboard"
-              layout={MainLayout}
-              component={DemoDashboardPage}
-            />
-            <LayoutRoute
-              exact
-              path="/demo/stats"
-              layout={MainLayout}
-              component={DemoStatsPage}
             />
 
             {/* private routes */}
@@ -164,8 +154,33 @@ class RootContainerComponent extends Component {
               layout={MainLayout}
               component={Profile}
             />
+            <PrivateRoute
+              exact
+              path="results/tests"
+              layout={MainLayout}
+              component={NotFound}
+            />
 
             {/* demo */}
+
+            <LayoutRoute
+              exact
+              path="/demo/dashboard"
+              layout={MainLayout}
+              component={DemoDashboardPage}
+            />
+            <LayoutRoute
+              exact
+              path="/demo/stats"
+              layout={MainLayout}
+              component={DemoStatsPage}
+            />
+            <LayoutRoute
+              exact
+              path="/results/tests"
+              layout={MainLayout}
+              component={DemoTestsPage}
+            />
 
             <LayoutRoute
               exact

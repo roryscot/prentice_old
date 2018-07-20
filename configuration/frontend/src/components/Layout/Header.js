@@ -62,7 +62,7 @@ class Header extends React.Component {
   static defaultProps = {
     isAuthenticated: false
   }
-  
+
   static propTypes = {
     sideBarIsOpen: PropTypes.bool.isRequired,
     handleSidebarControlButton: PropTypes.func.isRequired,
@@ -284,10 +284,10 @@ class Header extends React.Component {
                       className="border-light">
                       <ListGroup flush>
                         <ListGroupItem tag="button" action className="border-light">
-                          <NavLink href={'/demo/profile'}><MdPersonPin />Profile</NavLink>
+                          <NavLink href={'/profile'}><MdPersonPin />Profile</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <NavLink href={'/charts'}><MdInsertChart /> Stats</NavLink>
+                          <NavLink href={'/stats'}><MdInsertChart /> Stats</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
                           <NavLink href={'/messages'}><MdMessage /> Messages</NavLink>

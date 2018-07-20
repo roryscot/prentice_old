@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
     Table
 } from 'reactstrap';
+import { TEST_STYLES } from 'styles/cssConstants';
 
 import TestSectionRow from './TestSectionRow';
 
@@ -12,7 +13,7 @@ const TestSectionTable = (props) => {
     return (
         allTestSectionsDisplayed ?
             (
-                    <Table hover size="sm">
+                    <Table hover className={TEST_STYLES.TABLE_SMALL}>
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -27,8 +28,7 @@ const TestSectionTable = (props) => {
                         {
                             questions.map(q => {
                                 const verisimilitude = studentAnswers[q] === correctAnswers[q] ?
-                                    "correct-answer" : "incorrect-answer";
-
+                                    TEST_STYLES.CORRECT_ANSWER : TEST_STYLES.INCORRECT_ANSWER;
                                 return (
                                     <TestSectionRow
                                         key={`question${q}`}

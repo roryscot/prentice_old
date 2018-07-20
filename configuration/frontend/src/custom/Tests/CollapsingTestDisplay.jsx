@@ -9,6 +9,7 @@ import { questionListMaker } from '../../utils/helperFunctions';
 import { DisplayTestToggler } from './DisplaySectionsToggle';
 import IconTag from '../../custom/common/IconTag';
 import { TEST_ICON } from 'assets/icons';
+import { TEST_STYLES, CARD_STYLES } from 'styles/cssConstants';
 
 class TestDisplay extends Component {
     static propTypes = {
@@ -47,13 +48,13 @@ class TestDisplay extends Component {
         return (
             <div className="test-display border border-white rounded">
                 <Table>
-                        <thead >
+                        <thead className={TEST_STYLES.TEST_HEADER}>
                             <tr>
                                 <th><IconTag icon={TEST_ICON}/></th>
-                                <th className="test-header-display">{testType}</th>
-                                <th className="test-header-display">{testNumber}</th>
-                                <th className="test-header-display">Score: {convertedScore}</th>
-                                <th className="test-header-display">({completed})</th>
+                                <th >{testType}</th>
+                                <th >{testNumber}</th>
+                                <th >Score: {convertedScore}</th>
+                                <th >({completed})</th>
                                 <th>
                                     <DisplayTestToggler toggle={this.toggle} collapse={this.state.collapse}/>
                                 </th>
@@ -62,7 +63,7 @@ class TestDisplay extends Component {
                         </thead>
                     </Table>
                 <Collapse isOpen={this.state.collapse}>
-                    <Card className="collapse-card">
+                    <Card className={CARD_STYLES.CARD_DESIGN}>
                     {
                         sections.map(section => {
                             const {title, icon, score, convertedScore, studentAnswers, correctAnswers, marks, themes, tutornotes} = section;
@@ -91,11 +92,11 @@ class TestDisplay extends Component {
                         })
                     }
                     <Table>
-                        <tfoot >
+                        <tfoot className={TEST_STYLES.SECTION_HEADER}>
                             <tr>
-                                <th className="test-header-display">{testNumber}</th>
-                                <th className="test-header-display">Score: {convertedScore}</th>
-                                <th className="test-header-display">({completed})</th>
+                                <th>{testNumber}</th>
+                                <th>Score: {convertedScore}</th>
+                                <th>({completed})</th>
                             </tr>
                         </tfoot>
                     </Table>
@@ -111,8 +112,8 @@ class TestDisplay extends Component {
                                     <tfoot >
                                         <tr onClick={this.toggle}>
                                             <th><IconTag icon={icon}/></th>
-                                            <th className="test-header-display">{title}</th>
-                                            <th className="test-header-display">Score: {convertedScore}</th>
+                                            <th >{title}</th>
+                                            <th >Score: {convertedScore}</th>
                                         </tr>
                                     </tfoot>
                                 </Table>
