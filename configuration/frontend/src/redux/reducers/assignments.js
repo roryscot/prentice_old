@@ -1,9 +1,9 @@
 import actions from '../constants';
 
-const initialState = [];
+import initialState from './initialState';
 
 
-export default function handleAssignments(state=initialState, action) {
+export default function handleAssignments(state=initialState.assignments, action) {
     let assignmentWeeksList = state.slice();
 
   switch (action.type) {

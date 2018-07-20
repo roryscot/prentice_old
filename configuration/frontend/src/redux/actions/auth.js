@@ -52,13 +52,13 @@ export const login = (username, password) => {
       })
       .then(res => {
         if (res.status === 200) {
-          dispatch({type: 'LOGIN_SUCCESSFUL', data: res.data });
+          dispatch({type: 'LOGIN_SUCCESS', data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
           throw res.data;
         } else {
-          dispatch({type: "LOGIN_FAILED", data: res.data});
+          dispatch({type: "LOGIN_FAIL", data: res.data});
           throw res.data;
         }
       });
@@ -83,13 +83,13 @@ export const register = (username, email, password, accountType) => {
       })
       .then(res => {
         if (res.status === 200) {
-          dispatch({type: 'REGISTRATION_SUCCESSFUL', data: res.data });
+          dispatch({type: 'REGISTRATION_SUCCESS', data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
           throw res.data;
         } else {
-          dispatch({type: "REGISTRATION_FAILED", data: res.data});
+          dispatch({type: "REGISTRATION_FAIL", data: res.data});
           throw res.data;
         }
       });
@@ -115,7 +115,7 @@ export const logout = () => {
       })
       .then(res => {
         if (res.status === 204) {
-          dispatch({type: 'LOGOUT_SUCCESSFUL'});
+          dispatch({type: 'LOGOUT_SUCCESS'});
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});

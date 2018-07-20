@@ -1,9 +1,8 @@
 import actions from '../constants';
 
-const initialState = [];
+import initialState from './initialState';
 
-
-export default function handleNotes(state=initialState, action) {
+export default function handleNotes(state=initialState.notes, action) {
     let noteList = state.slice();
 
   switch (action.type) {

@@ -1,14 +1,7 @@
-const initialState = {
-    token: localStorage.getItem("token"),
-    isAuthenticated: false,
-    isLoggedIn: false,
-    isLoading: true,
-    user: null,
-    errors: {},
-  };
+import initialState from './initialState';
 
 
-  export default function auth(state=initialState, action) {
+  export default function auth(state=initialState.auth, action) {
 
     switch (action.type) {
 
@@ -18,16 +11,16 @@ const initialState = {
       case 'USER_LOADED':
         return {...state, isAuthenticated: true, isLoggedIn: true, isLoading: false, user: action.user};
 
-      case 'LOGIN_SUCCESSFUL':
-      case 'REGISTRATION_SUCCESSFUL':
+      case 'LOGIN_SUCCESS':
+      case 'REGISTRATION_SUCCESS':
           localStorage.setItem("token", action.data.token);
           return {...state, ...action.data, isAuthenticated: true,
             isLoggedIn: true, isLoading: false, errors: null};
 
       case 'AUTHENTICATION_ERROR':
-      case 'LOGIN_FAILED':
-      case 'REGISTRATION_FAILED':
-      case 'LOGOUT_SUCCESSFUL':
+      case 'LOGIN_FAIL':
+      case 'REGISTRATION_FAIL':
+      case 'LOGOUT_SUCCESS':
           localStorage.removeItem("token");
           return {...state, errors: action.data, token: null, user: null,
             isLoggedIn: false, isAuthenticated: false, isLoading: false};
