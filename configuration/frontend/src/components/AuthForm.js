@@ -1,10 +1,14 @@
-import logo200Image from 'assets/img/logo/logo_200.png';
+import BlueLogo from 'assets/img/logo/LogoMark.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 // import { Control, Form, actions } from 'react-redux-form';
 
 class AuthForm extends React.Component {
+  state = {
+    //validation
+    registration: false,
+  }
   get isLogin() {
     return this.props.authState === STATE_LOGIN;
   }
@@ -53,10 +57,10 @@ class AuthForm extends React.Component {
         {showLogo && (
           <div className="text-center pb-4">
             <img
-              src={logo200Image}
+              src={BlueLogo}
               className="rounded"
               style={{ width: 60, height: 60, cursor: 'pointer' }}
-              alt="logo"
+              alt="logo https://logomakr.com/6CmyNn"
               onClick={onLogoClick}
             />
           </div>

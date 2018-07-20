@@ -6,13 +6,10 @@ import SourceLink from 'components/SourceLink';
 
 const Footer = () => {
   return (
-    <Navbar>
-      <Nav navbar>
-        <NavItem>
-          2018 Prentice, source on <SourceLink>Github</SourceLink>
-        </NavItem>
-      </Nav>
-    </Navbar>
+    <div className="center">
+      <hr/>
+            2018 Prentice, source on <SourceLink>Github</SourceLink>
+    </div>
   );
 };
 

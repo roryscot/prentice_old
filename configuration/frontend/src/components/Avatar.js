@@ -3,7 +3,8 @@ import PropTypes from 'utils/propTypes';
 
 import classNames from 'classnames';
 
-import defaultUserImage from 'assets/img/users/anon_user.jpg';
+import defaultUserImage from 'assets/img/users/defaultUserImage.png';
+// logomakr.com/2TgCJe
 
 const Avatar = ({
   rounded,
@@ -42,6 +43,7 @@ Avatar.defaultProps = {
   size: 40,
   src: defaultUserImage,
   style: {},
+  alt: "logo: logomakr.com/7Ka3od"
 };
 
 export default Avatar;

@@ -35,7 +35,7 @@ import './styles/reduction.css';
 
 //Main
 import {
-  Dashboard,
+  DashBoardPage,
   Contact,
   Footer,
   Header,
@@ -47,7 +47,14 @@ import {
   ACTForm,
   Assignments,
   Profile,
+  StatsPage,
 } from 'custom';
+
+import {
+  DemoDashboardPage,
+  // DemoProfile,
+  DemoStatsPage,
+} from 'demos';
 
 let store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -70,12 +77,13 @@ class RootContainerComponent extends Component {
     this.props.loadUser();
   }
 
-  PrivateRoute = ({component: ChildComponent, layout: Layout, ...rest}) => {
+  PrivateRoute = ({component: ChildComponent, layout: Layout, path: path, ...rest}) => {
     return <Route {...rest} render={props => {
       if (this.props.auth.isLoading) {
         return <em>Loading...</em>;
       } else if (!this.props.auth.isAuthenticated) {
-        return <Redirect to="/login" />;
+        const interpolatedPath = `/demo${path}`;
+        return <Redirect to={interpolatedPath} />;
       } else {
         return (
           <Layout>
@@ -96,7 +104,9 @@ class RootContainerComponent extends Component {
               exact
               path="/"
               layout={MainLayout}
-              component={HomePage}
+              component={props => (
+                <HomePage {...props} authState={STATE_LOGIN} /> 
+              )}
             />
             <LayoutRoute
               exact
@@ -121,11 +131,32 @@ class RootContainerComponent extends Component {
               component={AuthModalPage}
             />
             
+            <LayoutRoute
+              exact
+              path="/demo/dashboard"
+              layout={MainLayout}
+              component={DemoDashboardPage}
+            />
+            <LayoutRoute
+              exact
+              path="/demo/stats"
+              layout={MainLayout}
+              component={DemoStatsPage}
+            />
+
+            {/* private routes */}
+
             <PrivateRoute
               exact
               path="/dashboard"
               layout={MainLayout}
-              component={DashboardPage}
+              component={DashBoardPage}
+            />
+            <PrivateRoute
+              exact
+              path="/stats"
+              layout={MainLayout}
+              component={StatsPage}
             />
             <PrivateRoute
               exact
@@ -135,6 +166,7 @@ class RootContainerComponent extends Component {
             />
 
             {/* demo */}
+
             <LayoutRoute
               exact
               path="/buttons"

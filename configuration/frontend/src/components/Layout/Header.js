@@ -59,6 +59,10 @@ const MdNotificationsActiveWithBadge = withBadge({
 })(MdNotificationsActive);
 
 class Header extends React.Component {
+  static defaultProps = {
+    isAuthenticated: false
+  }
+  
   static propTypes = {
     sideBarIsOpen: PropTypes.bool.isRequired,
     handleSidebarControlButton: PropTypes.func.isRequired,
@@ -202,26 +206,26 @@ class Header extends React.Component {
                     <UserCard
                       title={user.username}
                       subtitle={user.email}
-                      text={"Helpful text goes here"}
+                      text={user.info}
                       className="border-light">
-                      <ListGroup flush>
-                        <NavLink to={'/profile'} tag="button" action className="border-light">
-                          <MdPersonPin /> Profile
-                        </NavLink>
-                        <NavLink to={'/stats'} tag="button" action className="border-light">
-                          <MdInsertChart /> Stats
-                        </NavLink>
+                     <ListGroup flush>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdMessage /> Messages
+                          <NavLink href={'/demo/profile'}><MdPersonPin />Profile</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdSettingsApplications /> Settings
+                          <NavLink href={'/charts'}><MdInsertChart /> Stats</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdHelp /> Help
+                          <NavLink href={'/messages'}><MdMessage /> Messages</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdExitToApp /> Signout
+                          <NavLink href={'/settings'}><MdSettingsApplications /> Settings</NavLink>
+                        </ListGroupItem>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <NavLink href={'/help'}><MdHelp /> Help</NavLink>
+                        </ListGroupItem>
+                        <ListGroupItem tag="button" action className="border-light">
+                          <NavLink href='#' onClick={this.logout}><MdExitToApp /> Sign Out</NavLink>
                         </ListGroupItem>
                       </ListGroup>
                     </UserCard>
@@ -274,28 +278,28 @@ class Header extends React.Component {
                   style={{ minWidth: 250 }}>
                   <PopoverBody className="p-0 border-light">
                     <UserCard
-                      title="Jane"
-                      subtitle="jane@jane.com"
-                      text="Last updated 3 mins ago"
+                      title="Guest"
+                      subtitle="guest@email.com"
+                      text="Check your Progres reports"
                       className="border-light">
                       <ListGroup flush>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdPersonPin /> Profile
+                          <NavLink href={'/demo/profile'}><MdPersonPin />Profile</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdInsertChart /> Stats
+                          <NavLink href={'/charts'}><MdInsertChart /> Stats</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdMessage /> Messages
+                          <NavLink href={'/messages'}><MdMessage /> Messages</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdSettingsApplications /> Settings
+                          <NavLink href={'/settings'}><MdSettingsApplications /> Settings</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdHelp /> Help
+                          <NavLink href={'/help'}><MdHelp /> Help</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <MdExitToApp /> Signout
+                          <NavLink href={'/login'}><MdExitToApp /> Sign In</NavLink>
                         </ListGroupItem>
                       </ListGroup>
                     </UserCard>
