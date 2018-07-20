@@ -13,10 +13,10 @@ export const DisplayAllSectionsToggler = (props) => (
 );
 
 
-export const DisplayTestToggler = (props) => (
-    <span className="close" onClick={props.toggle}>
+export const DisplayTestToggler = ({toggle, collapse}) => (
+    <span className="close" onClick={toggle}>
         {
-            props.collapse ?
+            collapse ?
             <img src={Collapse} alt="Collapse"/> :
             <img src={Expand} alt="Expand"/>
         }
@@ -24,10 +24,10 @@ export const DisplayTestToggler = (props) => (
 );
 
 
-export const DisplaySectionToggler = (props) => (
-    <span className="close" onClick={props.toggle}>
+export const DisplaySectionToggler = ({toggle, collapse}) => (
+    <span className="close" onClick={toggle}>
         {
-            props.collapse ?
+            collapse ?
             <img src={Collapse} alt="Collapse"/> :
             <img src={Expand} alt="Expand"/>
         }

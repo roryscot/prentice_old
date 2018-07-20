@@ -1,7 +1,6 @@
 import React from 'react';
 
-const AuthInput = (props) => {
-    const {name, title, onChange, type, className} = props;
+const AuthInput = ({name, title, onChange, type, className}) => {
     return  (
         <div className={className}>
             <label htmlFor={name}>{title}</label>

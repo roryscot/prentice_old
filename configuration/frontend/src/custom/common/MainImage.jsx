@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const MainImage = (props) => {
-    const { src, alt } = props;
-
+const MainImage = ({ src, alt }) => {
     return (
         <span className="image main">
             <hr/>

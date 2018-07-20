@@ -1,7 +1,7 @@
 import React from 'react';
 
-const IconTag = (props) => (
-    <img src={props.icon} />
+const IconTag = ({icon}) => (
+    <img src={icon} />
 );
 
 export default IconTag;

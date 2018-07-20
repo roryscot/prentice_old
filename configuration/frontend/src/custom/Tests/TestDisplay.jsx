@@ -8,10 +8,8 @@ import { questionListMaker } from '../../utils/helperFunctions';
 
 import {DisplaySectionToggler} from './DisplaySectionsToggle';
 
-const TestDisplay = (props) => {
-    const { allTestSectionsDisplayed } = props;
-    const { testNumber, completed, convertedScore, sections} = props.test;
-    const username = props.username;
+const TestDisplay = ({ test, username, toggle, shown, hidden }) => {
+    const { testNumber, completed, convertedScore, sections} = test;
     return (
         <div className="test-display border border-white rounded">
             <table>
@@ -21,7 +19,7 @@ const TestDisplay = (props) => {
                         <th className="test-header-display">Score: {convertedScore}</th>
                         <th className="test-header-display">({completed})</th>
                         <th className="test-header-display">
-                            <DisplaySectionToggler className="close" toggle={props.toggle} allTestSectionsDisplayed={allTestSectionsDisplayed}/>
+                            <DisplaySectionToggler className="close" toggle={toggle} />
                         </th>
                     </tr>
 
@@ -47,9 +45,7 @@ const TestDisplay = (props) => {
                             tutornotes={tutornotes}
                             username={username}
 
-                            toggle={this.toggle} shown={props.shown} hidden={props.hidden}
-                            allTestSectionsDisplayed={allTestSectionsDisplayed}
-
+                            toggle={this.toggle} shown={shown} hidden={hidden}
                         />
                     );
                 })
