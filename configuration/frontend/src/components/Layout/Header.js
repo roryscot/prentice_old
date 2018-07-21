@@ -124,12 +124,7 @@ class Header extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    // if (this.handleAuthState(this.authState) === STATE_LOGIN)
-    // {
       this.props.login(this.state.username, this.state.password);
-    // } else {
-    //   this.props.register(this.state.username, this.state.password);
-    // }
   }
 
   onChange = (e) =>{

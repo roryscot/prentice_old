@@ -1,17 +1,18 @@
 import React from 'react';
+import {FormGroup, Label, Input } from 'reactstrap';
 
-const AuthInput = ({name, title, onChange, type, className}) => {
+const AuthInput = ({name, title, onChange, type, className, required}) => {
     return  (
-        <div className={className}>
-            <label htmlFor={name}>{title}</label>
-            <input
+        <FormGroup className={className}>
+            <Label htmlFor={name}>{title}</Label>
+            <Input
                 type={type} id={name}
                 onChange={onChange}
                 placeholder={title}
                 name={name}
-                required
+                required={required}
             />
-        </div>
+        </FormGroup>
     );
 };
 

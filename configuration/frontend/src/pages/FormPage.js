@@ -306,7 +306,7 @@ const FormPage = () => {
                 </FormGroup>
                 <FormGroup>
                   <Label for="examplePassword">Input with danger</Label>
-                  <Input valid={false} />
+                  <Input invalid />
                   <FormFeedback>
                     Oh noes! that name is already taken
                   </FormFeedback>

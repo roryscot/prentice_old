@@ -39,11 +39,11 @@ import {
   Contact,
   Footer,
   Header,
-  Register,
+  RegisterPage,
   HomePage,
   About,
   NotFound,
-  Login,
+  LoginPage,
   ACTForm,
   Assignments,
   Profile,
@@ -52,7 +52,7 @@ import {
 
 import {
   DemoDashboardPage,
-  // DemoProfile,
+  DemoProfilePage,
   DemoStatsPage,
   DemoTestsPage,
 } from 'demos';
@@ -114,16 +114,31 @@ class RootContainerComponent extends Component {
               path="/login"
               layout={EmptyLayout}
               component={props => (
-                <AuthPage {...props} authState={STATE_LOGIN} />
+                <LoginPage {...props} />
               )}
             />
+
             <LayoutRoute
               exact
-              path="/signup"
+              path="/register"
               layout={EmptyLayout}
               component={props => (
-                <AuthPage {...props} authState={STATE_SIGNUP} />
+                <RegisterPage {...props} />
               )}
+            />
+
+            <LayoutRoute
+              exact
+              path="/about"
+              layout={MainLayout}
+              component={About}
+            />
+
+            <LayoutRoute
+              exact
+              path="/contact"
+              layout={MainLayout}
+              component={Contact}
             />
 
 
@@ -146,14 +161,15 @@ class RootContainerComponent extends Component {
               exact
               path="/profile"
               layout={MainLayout}
-              component={Profile}
+              component={DemoProfilePage}
             />
             <PrivateRoute
               exact
               path="results/tests"
               layout={MainLayout}
-              component={NotFound}
+              component={DemoTestsPage}
             />
+
 
             {/* demo */}
 
@@ -175,6 +191,14 @@ class RootContainerComponent extends Component {
               layout={MainLayout}
               component={DemoTestsPage}
             />
+
+            <LayoutRoute
+              exact
+              path="/demo/profile"
+              layout={MainLayout}
+              component={DemoProfilePage}
+            />
+
             
             {/* models */}
             <LayoutRoute

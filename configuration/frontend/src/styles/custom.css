@@ -1,6 +1,7 @@
 .center {
     margin-top: 1rem !important;
     text-align: center;
+    justify-content: center;
 }
 
 .front {
