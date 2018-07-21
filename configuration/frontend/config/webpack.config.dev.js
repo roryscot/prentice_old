@@ -1,5 +1,3 @@
-
-
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -13,15 +11,18 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const BundleTracker = require('webpack-bundle-tracker');
 
-const devProtocol = 'http';
-process.env.BROWSER = 'google chrome canary';
+const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || '3000';
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
-const publicPath = `${devProtocol}://localhost:3000/`;
+const publicPath = `${protocol}://${host}:${port}/`;
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-const publicUrl = `${devProtocol}://localhost:3000/`;
+// const publicUrl = `http://localhost:3000/`;
+const publicUrl = publicPath;
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
@@ -46,7 +47,7 @@ module.exports = {
     // Note: instead of the default WebpackDevServer client, we use a custom one
     // to bring better experience for Create React App users. You can replace
     // the line below with these two lines if you prefer the stock client:
-    require.resolve('webpack-dev-server/client') + '?http://localhost:3000',
+    require.resolve('webpack-dev-server/client') + `?${publicUrl}`,
     require.resolve('webpack/hot/dev-server'),
     // require.resolve('react-dev-utils/webpackHotDevClient'),
     // Finally, this is your app's code:

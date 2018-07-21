@@ -1,5 +1,26 @@
 .center {
+    margin-top: 1rem !important;
     text-align: center;
+}
+.front {
+    z-index: 10;
+}
+
+.back {
+    z-index: -1 !important;
 }
 
 #success_message{ display: none;}
+
+.image-blurred-primary-color {
+    /* you need to match the shadow color to your background or image border for the desired effect*/
+    box-shadow: 1em 1em 11em 4em #f8f9fa inset;
+}
+
+#header-image {
+    margin-top: 1rem !important;
+    margin-right: 1rem !important;
+}
+.inline {
+    display: -webkit-inline-box !important;
+}

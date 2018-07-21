@@ -6,6 +6,10 @@ import {Redirect} from "react-router-dom";
 import Page from 'components/Page';
 import { getColor } from 'utils/colors';
 
+import { Row } from 'reactstrap';
+
+import homePageBackgroundImage from 'assets/img/bg/homepage-bg.jpg';
+
 import {
     supportTicketsData,
     productsData,
@@ -13,7 +17,18 @@ import {
     avatarsData,
     todosData,
     chartjs,
-  } from 'demos/dashboardPage';
+} from 'demos/dashboardPage';
+
+import bn from 'utils/bemnames';
+
+const homePageBackground = {
+    backgroundImage: `url("${homePageBackgroundImage}")`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+};
+
+
+const bem = bn.create('sidebar');
 
 class HomePage extends Component {
     componentDidMount() {
@@ -25,19 +40,32 @@ class HomePage extends Component {
         if (this.props.isAuthenticated) {
             return <Redirect to="/dashboard" />;
         }
+
         const primaryColor = getColor('primary');
         const secondaryColor = getColor('secondary');
 
         return (
             <Page 
                 id="HomePage"
+                data-image={homePageBackgroundImage}
             >
-                <div className="center text-primary">
-                    <h1 className="display-1"><em>prentice</em></h1>
-                    <h2>You can learn anything</h2>
-                    <p>
-                        <img src={logo} alt="LogoMakr https://logomakr.com/6CmyNn" className="logo img-fluid text-center"/>
-                    </p>
+                <div className={bem.e('content')}>
+                    <div className="center text-secondary">
+
+                            <span className="inline">
+                                <img 
+                                    src={logo} 
+                                    alt="LogoMakr https://logomakr.com/6CmyNn" 
+                                    width="80"
+                                    height="80"
+                                    id="header-image"
+                                />
+                                <h1 className="display-1"><em>prentice</em></h1>
+                            </span>
+                            <h2  className=""><em>~ You can learn </em> <strong>anything</strong> </h2>
+                        <div className={bem.e('background') + " image-blurred-primary-color back"} style={homePageBackground} />
+
+                    </div>
                 </div>
             </Page>
         );
