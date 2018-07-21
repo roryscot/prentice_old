@@ -126,12 +126,7 @@ class RootContainerComponent extends Component {
               )}
             />
 
-            <LayoutRoute
-              exact
-              path="/login-modal"
-              layout={MainLayout}
-              component={AuthModalPage}
-            />
+
 
             {/* private routes */}
 
@@ -176,11 +171,18 @@ class RootContainerComponent extends Component {
             />
             <LayoutRoute
               exact
-              path="/results/tests"
+              path="/demo/results/tests"
               layout={MainLayout}
               component={DemoTestsPage}
             />
-
+            
+            {/* models */}
+            <LayoutRoute
+              exact
+              path="/login-modal"
+              layout={MainLayout}
+              component={AuthModalPage}
+            />
             <LayoutRoute
               exact
               path="/buttons"
@@ -280,7 +282,6 @@ class RootContainerComponent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('rootcontainer state', state)
   return {
     auth: state.auth,
     loading: state.ajaxCallsInProgress > 0

@@ -30,18 +30,18 @@ class HomePage extends Component {
                 data-image={homePageBackgroundImage}
             >
                 <div className={bem.e('content')}>
-                    <div className="center text-secondary">
+                    <div className="center text-secondary" id="homepage-title">
                             <span className="inline">
                                 <img 
                                     src={logo} 
                                     alt="LogoMakr https://logomakr.com/6CmyNn" 
                                     width="80"
                                     height="80"
-                                    id="header-image"
+                                    id="homepage-image"
                                 />
-                                <h1 className="display-1"><em>prentice</em></h1>
+                                <h1 className="display-1"  ><em>prentice</em></h1>
                             </span>
-                            <h2  className=""><em>~ You can learn </em> <strong>anything</strong> </h2>
+                            <h2><em>~ You can learn </em> <strong>anything</strong> </h2>
                         <div className={bem.e('background') + " image-blurred-primary-color back"} style={homePageBackground} />
                     </div>
                 </div>
