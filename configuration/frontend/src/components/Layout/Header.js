@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LoginModal from 'custom/LoginModal';
+import { STATE_LOGIN } from 'components/AuthForm';
 import bn from 'utils/bemnames';
 
 import {
@@ -82,6 +84,22 @@ class Header extends React.Component {
     isOpenNotificationPopover: false,
     isNotificationConfirmed: false,
     isOpenUserCardPopover: false,
+    authState: STATE_LOGIN,
+    loginModalShow: false,
+    username: "",
+    password: "",
+  };
+
+  loginModalToggle = () => {
+    this.setState({
+      loginModalShow: !this.state.loginModalShow
+    });
+  };
+
+  handleAuthState = authState => {
+    this.setState({
+      authState,
+    });
   };
 
   toggleNotificationPopover = () => {
@@ -94,11 +112,29 @@ class Header extends React.Component {
     }
   };
 
+  handleLogoClick = () => {
+    this.props.history.push('/');
+  };
+
   toggleUserCardPopover = () => {
     this.setState({
       isOpenUserCardPopover: !this.state.isOpenUserCardPopover,
     });
   };
+
+  onSubmit = e => {
+    e.preventDefault();
+    // if (this.handleAuthState(this.authState) === STATE_LOGIN)
+    // {
+      this.props.login(this.state.username, this.state.password);
+    // } else {
+    //   this.props.register(this.state.username, this.state.password);
+    // }
+  }
+
+  onChange = (e) =>{
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   logout = (e) => {
     e.preventDefault();
@@ -138,6 +174,15 @@ class Header extends React.Component {
 
     return (
       <Navbar light expand className={bem.b('bg-white')}>
+        <LoginModal 
+          show={this.state.loginModalShow}
+          authState={this.state.authState}
+          toggle={this.loginModalToggle}
+          handleAuthState={this.handleAuthState}
+          onChange={this.onChange}
+          onSubmit={this.onSubmit}
+          onLogoClick={this.onLogoClick}
+        />
           {
             this.props.sideBarIsOpen ?
               null :
@@ -311,18 +356,29 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.ajaxCallsInProgress)
+  let errors = [];
+  if (state.auth.errors) {
+    errors = Object.keys(state.auth.errors).map(field => {
+      return {field, message: state.auth.errors[field]};
+    });
+  }
 
   return {
     user: state.auth.user,
     isAuthenticated: state.auth.isAuthenticated,
-    // loading: state.ajaxCallsInProgress > 0,
-    loading: true
+    loading: state.ajaxCallsInProgress > 0,
+    errors,
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    login: (username, password) => {
+      return dispatch(auth.login(username, password));
+    },
+    register: (username, email, password, accountType) => {
+      return dispatch(auth.register(username, email, password, accountType))
+    },
     logOut: () => dispatch(auth.logout()),
   };
 };

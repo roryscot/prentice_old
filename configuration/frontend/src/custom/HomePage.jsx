@@ -4,20 +4,8 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
 import Page from 'components/Page';
-import { getColor } from 'utils/colors';
-
-import { Row } from 'reactstrap';
 
 import homePageBackgroundImage from 'assets/img/bg/homepage-bg.jpg';
-
-import {
-    supportTicketsData,
-    productsData,
-    userProgressTableData,
-    avatarsData,
-    todosData,
-    chartjs,
-} from 'demos/dashboardPage';
 
 import bn from 'utils/bemnames';
 
@@ -31,18 +19,10 @@ const homePageBackground = {
 const bem = bn.create('sidebar');
 
 class HomePage extends Component {
-    componentDidMount() {
-    // this is needed, because InfiniteCalendar forces window scroll
-    window.scrollTo(0, 0);
-    }
-
     render() {
         if (this.props.isAuthenticated) {
             return <Redirect to="/dashboard" />;
         }
-
-        const primaryColor = getColor('primary');
-        const secondaryColor = getColor('secondary');
 
         return (
             <Page 
@@ -51,7 +31,6 @@ class HomePage extends Component {
             >
                 <div className={bem.e('content')}>
                     <div className="center text-secondary">
-
                             <span className="inline">
                                 <img 
                                     src={logo} 
@@ -64,7 +43,6 @@ class HomePage extends Component {
                             </span>
                             <h2  className=""><em>~ You can learn </em> <strong>anything</strong> </h2>
                         <div className={bem.e('background') + " image-blurred-primary-color back"} style={homePageBackground} />
-
                     </div>
                 </div>
             </Page>

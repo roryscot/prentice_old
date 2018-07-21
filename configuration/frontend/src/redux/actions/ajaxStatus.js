@@ -1,12 +1,12 @@
-import * as types from '../actionTypes';
+import { BEGIN_AJAX_CALL, AJAX_CALL_ERROR } from '../actionTypes';
 
 export function beginAjaxCall() {
   return ({
-    type: types.BEGIN_AJAX_CALL
+    type: BEGIN_AJAX_CALL
   });
 }
 export function ajaxCallError() {
   return ({
-    type: types.AJAX_CALL_ERROR
+    type: AJAX_CALL_ERROR
   });
 }

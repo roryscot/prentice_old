@@ -280,6 +280,7 @@ class RootContainerComponent extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log('rootcontainer state', state)
   return {
     auth: state.auth,
     loading: state.ajaxCallsInProgress > 0

@@ -12,6 +12,8 @@ import {
 
 export const loadUser = () => {
     return (dispatch, getState) => {
+      dispatch(beginAjaxCall());
+
       dispatch({type: USER_LOADING});
 
       const token = getState().auth.token;
@@ -31,7 +33,8 @@ export const loadUser = () => {
             });
           } else {
             console.log("Server Error!"); // eslint-disable-line
-            throw res;
+          dispatch(ajaxCallError(res.data));
+          throw res;
           }
         })
         .then(res => {
@@ -40,7 +43,8 @@ export const loadUser = () => {
             return res.data;
           } else if (res.status >= 400 && res.status < 500) {
             dispatch({type: AUTHENTICATION_ERROR, data: res.data});
-            throw res.data;
+          dispatch(ajaxCallError(res.data));
+          throw res.data;
           }
         });
     };
@@ -48,7 +52,8 @@ export const loadUser = () => {
 
 export const login = (username, password) => {
   return (dispatch) => {
-    let headers = {"Content-Type": "application/json"};
+      dispatch(beginAjaxCall());
+      let headers = {"Content-Type": "application/json"};
     let body = JSON.stringify({username, password});
 
     return fetch("api/auth/login/", {headers, body, method: "POST"})
@@ -59,6 +64,7 @@ export const login = (username, password) => {
           });
         } else {
           console.log("Server Error!"); // eslint-disable-line
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -68,9 +74,11 @@ export const login = (username, password) => {
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         } else {
           dispatch({type: LOGIN_FAIL, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });
@@ -80,7 +88,8 @@ export const login = (username, password) => {
 export const register = (username, email, password, accountType) => {
   return (dispatch) => {
     console.log(accountType);
-    let headers = {"Content-Type": "application/json"};
+      dispatch(beginAjaxCall());
+      let headers = {"Content-Type": "application/json"};
     let body = JSON.stringify({username, email, password, accountType});
     return fetch("/api/auth/register/", {headers, body, method: "POST"})
       .then(res => {
@@ -99,9 +108,11 @@ export const register = (username, email, password, accountType) => {
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         } else {
           dispatch({type: REGISTRATION_FAIL, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });
@@ -110,7 +121,8 @@ export const register = (username, email, password, accountType) => {
 
 export const logout = () => {
   return (dispatch, getState) => {
-    let headers = {"Content-Type": "application/json"};
+      dispatch(beginAjaxCall());
+      let headers = {"Content-Type": "application/json"};
 
     return fetch("/api/auth/logout/", {headers, body: "", method: "POST"})
       .then(res => {
@@ -122,6 +134,7 @@ export const logout = () => {
           });
         } else {
           console.log("Server Error!"); // eslint-disable-line
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -131,6 +144,7 @@ export const logout = () => {
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });

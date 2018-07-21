@@ -1,10 +1,9 @@
 import {beginAjaxCall, ajaxCallError} from './ajaxStatus';
 import { ADD_NOTE_SUCCESS, UPDATE_NOTE_SUCCESS, DELETE_NOTE_SUCCESS, FETCH_NOTES_SUCCESS, AUTHENTICATION_ERROR } from '../actionTypes';
 
-import { actionTypes } from 'react-redux-form';
-
 export const fetchNotes = () => {
   return (dispatch, getState) => {
+    dispatch(beginAjaxCall());
     let headers = {"Content-Type": "application/json"};
     let {token} = getState().auth;
 
@@ -20,6 +19,7 @@ export const fetchNotes = () => {
           });
         } else {
           console.log("Server Error!");
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -28,6 +28,7 @@ export const fetchNotes = () => {
           return dispatch({type: FETCH_NOTES_SUCCESS, notes: res.data});
         } else if (res.status === 401 || res.status === 403) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });
@@ -36,6 +37,7 @@ export const fetchNotes = () => {
 
 export const addNote = text => {
   return (dispatch, getState) => {
+    dispatch(beginAjaxCall());
     let headers = {"Content-Type": "application/json"};
     let {token} = getState().auth;
 
@@ -52,6 +54,7 @@ export const addNote = text => {
           });
         } else {
           console.log("Server Error!");
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -60,6 +63,7 @@ export const addNote = text => {
           return dispatch({type: ADD_NOTE_SUCCESS, note: res.data});
         } else if (res.status === 401 || res.status === 403) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });
@@ -68,7 +72,7 @@ export const addNote = text => {
 
 export const updateNote = (index, text) => {
   return (dispatch, getState) => {
-
+    dispatch(beginAjaxCall());
     let headers = {"Content-Type": "application/json"};
     let {token} = getState().auth;
 
@@ -87,6 +91,7 @@ export const updateNote = (index, text) => {
           });
         } else {
           console.log("Server Error!");
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -95,6 +100,7 @@ export const updateNote = (index, text) => {
           return dispatch({type: UPDATE_NOTE_SUCCESS, note: res.data, index});
         } else if (res.status === 401 || res.status === 403) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });
@@ -103,7 +109,7 @@ export const updateNote = (index, text) => {
 
 export const deleteNote = index => {
   return (dispatch, getState) => {
-
+    dispatch(beginAjaxCall());
     let headers = {"Content-Type": "application/json"};
     let {token} = getState().auth;
 
@@ -123,6 +129,7 @@ export const deleteNote = index => {
           });
         } else {
           console.log("Server Error!");
+          dispatch(ajaxCallError(res.data));
           throw res;
         }
       })
@@ -131,6 +138,7 @@ export const deleteNote = index => {
           return dispatch({type: DELETE_NOTE_SUCCESS, index});
         } else if (res.status === 401 || res.status === 403) {
           dispatch({type: AUTHENTICATION_ERROR, data: res.data});
+          dispatch(ajaxCallError(res.data));
           throw res.data;
         }
       });

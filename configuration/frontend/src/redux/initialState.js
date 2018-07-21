@@ -9,5 +9,5 @@ export default {
         errors: {},
     },
     assignments: [],
-    ajaxCallsInProgress: 1,
+    ajaxCallsInProgress: 0,
   };
