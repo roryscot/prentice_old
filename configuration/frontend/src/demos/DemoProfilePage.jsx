@@ -44,15 +44,15 @@ const homePageBackground = {
 
 const DemoProfilePage = () => {
   return (
-    <Page 
-      title="Profile" 
+    <Page
+      title="Profile"
       breadcrumbs={[{ name: 'Profile', active: true }]}
       id="Profile"
       data-image={ProfileBackgroundImage}
     >
       <Row className={bem.e('content')+ " center"}>
        <div className={bem.e('background') + " image-blurred-primary-color back"} style={homePageBackground} />
-       <Col md={7} 
+       <Col md={7}
           className="center"
           >
           <UserCard
@@ -67,7 +67,7 @@ const DemoProfilePage = () => {
         </Col>
       </Row>
       {/* <Row>
-      
+
       </Row> */}
       <Row>
         <Col md={6} sm={6} xs={12} className="mb-3">
@@ -81,7 +81,7 @@ const DemoProfilePage = () => {
             </CardBody>
           </Card>
         </Col>
-   
+
         <Col md={6} sm={6} xs={12} className="mb-3">
           <Card>
           <Line

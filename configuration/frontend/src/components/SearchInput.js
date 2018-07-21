@@ -5,7 +5,7 @@ import { MdSearch } from 'react-icons/lib/md';
 
 const SearchInput = () => {
   return (
-    <Form inline className="cr-search-form" onSubmit={e => {e.preventDefault(); alert("Search not Implemented.")}}>
+    <Form inline className="cr-search-form" onSubmit={e => {e.preventDefault(); alert("Search not Implemented.");}}>
       <MdSearch
         size="20"
         className="cr-search-form__icon-search text-secondary"

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 import { Link } from "react-router-dom";
+import AuthInput from 'custom/common/AuthInput';
 
 class LoginForm extends React.Component {
   state = {
@@ -36,16 +37,20 @@ class LoginForm extends React.Component {
             />
           </div>
         )}
-        <FormGroup>
-          <Label for={usernameLabel}>{usernameLabel}</Label>
-          <Input {...usernameInputProps} onChange={onChange}/>
-
-        </FormGroup>
-        <FormGroup>
-          <Label for={passwordLabel}>{passwordLabel}</Label>
-          <Input {...passwordInputProps} onChange={onChange}/>
-
-        </FormGroup>
+        <AuthInput
+              title="Username"
+              name="username"
+              type="text"
+              onChange={onChange}
+              required
+          />
+          <AuthInput
+              title="Password"
+              name="password"
+              type="password"
+              onChange={onChange}
+              required
+          />
         <FormGroup check>
           <Label check>
                   <div>

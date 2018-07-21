@@ -25,15 +25,10 @@ class RegisterForm extends React.Component {
     //     ]).isRequired,
     //     signUpPending: PropTypes.bool.isRequired
     //   }
-    
+
   render() {
     const {
       showLogo,
-      usernameLabel,
-      usernameInputProps,
-      passwordLabel,
-      passwordInputProps,
-      confirmPasswordLabel,
       onLogoClick,
       onSubmit,
       onChange
@@ -69,10 +64,34 @@ class RegisterForm extends React.Component {
             </Row>
         </FormGroup>
 
-            <AuthInput title="Email" name="email" type="email" onChange={onChange}  required />
-            <AuthInput title="Username" name="username" type="text" onChange={onChange}  required />
-            <AuthInput title="Password" name="password" type="password" onChange={onChange}  required />
-            <AuthInput title="Confirm Password" name="confirmPassword" type="password" onChange={onChange} required/>
+            <AuthInput
+                title="Email"
+                name="email"
+                type="email"
+                onChange={onChange}
+                required
+            />
+            <AuthInput
+                title="Username"
+                name="username"
+                type="text"
+                onChange={onChange}
+                required
+            />
+            <AuthInput
+                title="Password"
+                name="password"
+                type="password"
+                onChange={onChange}
+                required
+            />
+            <AuthInput
+                title="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                onChange={onChange}
+                required
+            />
 
         <FormGroup check>
           <Label check>

@@ -169,7 +169,7 @@ class Header extends React.Component {
 
     return (
       <Navbar light expand className={bem.b('bg-white')}>
-        <LoginModal 
+        <LoginModal
           show={this.state.loginModalShow}
           authState={this.state.authState}
           toggle={this.loginModalToggle}
@@ -224,7 +224,7 @@ class Header extends React.Component {
                   </PopoverBody>
                 </Popover>
               </NavItem>
-              
+
               <NavItem>
                 <NavLink id="Popover2">
                   <Avatar
@@ -262,7 +262,7 @@ class Header extends React.Component {
                           <NavLink href={'/help'}><MdHelp /> Help</NavLink>
                         </ListGroupItem>
                         <ListGroupItem tag="button" action className="border-light">
-                          <NavLink href='#' onClick={this.logout}><MdExitToApp /> Sign Out</NavLink>
+                          <NavLink href="#" onClick={this.logout}><MdExitToApp /> Sign Out</NavLink>
                         </ListGroupItem>
                       </ListGroup>
                     </UserCard>
@@ -298,7 +298,7 @@ class Header extends React.Component {
                   </PopoverBody>
                 </Popover>
               </NavItem>
-              
+
               <NavItem>
                 <NavLink id="Popover2">
                   <Avatar
@@ -372,7 +372,7 @@ const mapDispatchToProps = dispatch => {
       return dispatch(auth.login(username, password));
     },
     register: (username, email, password, accountType) => {
-      return dispatch(auth.register(username, email, password, accountType))
+      return dispatch(auth.register(username, email, password, accountType));
     },
     logOut: () => dispatch(auth.logout()),
   };

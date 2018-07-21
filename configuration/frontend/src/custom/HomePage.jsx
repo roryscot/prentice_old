@@ -25,16 +25,16 @@ class HomePage extends Component {
         }
 
         return (
-            <Page 
+            <Page
                 id="HomePage"
                 data-image={homePageBackgroundImage}
             >
                 <div className={bem.e('content')}>
                     <div className="center text-secondary" id="homepage-title">
                             <span className="inline">
-                                <img 
-                                    src={logo} 
-                                    alt="LogoMakr https://logomakr.com/6CmyNn" 
+                                <img
+                                    src={logo}
+                                    alt="LogoMakr https://logomakr.com/6CmyNn"
                                     width="80"
                                     height="80"
                                     id="homepage-image"

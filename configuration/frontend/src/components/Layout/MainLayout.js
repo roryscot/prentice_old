@@ -105,7 +105,7 @@ class MainLayout extends React.Component {
         <Sidebar handleSidebarControlButton={this.handleSidebarControlButton}/>
         <Content fluid onClick={this.handleContentClick}>
           <Header
-            sideBarIsOpen={this.state.sideBarIsOpen} 
+            sideBarIsOpen={this.state.sideBarIsOpen}
             handleSidebarControlButton={this.handleSidebarControlButton}
           />
           {children}

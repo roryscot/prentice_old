@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
       return dispatch(auth.login(username, password));
     },
     register: (username, email, password, accountType) => {
-      return dispatch(auth.register(username, email, password, accountType))
+      return dispatch(auth.register(username, email, password, accountType));
     }
   };
 };

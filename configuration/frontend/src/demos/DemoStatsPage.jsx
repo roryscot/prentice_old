@@ -93,7 +93,7 @@ const ChartPage = () => {
         </Col>
       </Row>
 
-      
+
       <Row>
         <Col xl={6} lg={12} md={12}>
           <Card>

@@ -77,7 +77,7 @@ class DashboardPage extends React.Component {
         className="DashboardPage"
         title="Tutor Dashboard"
         breadcrumbs={[{ name: 'Dashboard', active: true }]}>
-        
+
         <CardDeck style={{ marginBottom: '1rem' }}>
           <Card body style={{ overflowX: 'auto' }}>
             <HorizontalAvatarList

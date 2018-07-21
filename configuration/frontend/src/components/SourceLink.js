@@ -8,4 +8,3 @@ const SourceLink = props => {
 };
 
 export default SourceLink;
-    

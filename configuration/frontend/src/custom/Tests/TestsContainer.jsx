@@ -29,7 +29,7 @@ class TestsContainer extends Component {
 			allTestSectionsDisplayed: !this.state.allTestSectionsDisplayed
 		});
     }
-    
+
     columnMaker(tests) {
         let rows = [];
         let count=0;
@@ -56,7 +56,7 @@ class TestsContainer extends Component {
             <div>
                 {
                     allTests.map((row,i) => {
-                        
+
                         return (
                             <Row>
                                 <Col>
@@ -81,7 +81,7 @@ class TestsContainer extends Component {
                                     </Col> : null
                                 }
                             </Row>
-                        )
+                        );
                     })
                 }
             </div>

@@ -107,24 +107,24 @@ class Registration extends Component {
     //         .on('success.form.bv', function(e) {
     //             $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
     //                 $('#contact_form').data('bootstrapValidator').resetForm();
-    
+
     //             // Prevent form submission
     //             e.preventDefault();
-    
+
     //             // Get the form instance
     //             var $form = $(e.target);
-    
+
     //             // Get the BootstrapValidator instance
     //             var bv = $form.data('bootstrapValidator');
-    
+
     //             // Use Ajax to submit form data
     //             $.post($form.attr('action'), $form.serialize(), function(result) {
     //                 console.log(result);
     //             }, 'json');
     //         });
     // });
-    
-    
+
+
 
     render() {
         return (
@@ -139,7 +139,7 @@ class Registration extends Component {
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>  
+  <label class="col-md-4 control-label">First Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -151,7 +151,7 @@ class Registration extends Component {
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label> 
+  <label class="col-md-4 control-label" >Last Name</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -162,7 +162,7 @@ class Registration extends Component {
 
 <!-- Text input-->
        <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
+  <label class="col-md-4 control-label">E-Mail</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -173,9 +173,9 @@ class Registration extends Component {
 
 
 <!-- Text input-->
-       
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Phone #</label>  
+  <label class="col-md-4 control-label">Phone #</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
@@ -185,9 +185,9 @@ class Registration extends Component {
 </div>
 
 <!-- Text input-->
-      
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Address</label>  
+  <label class="col-md-4 control-label">Address</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -197,9 +197,9 @@ class Registration extends Component {
 </div>
 
 <!-- Text input-->
- 
+
 <div class="form-group">
-  <label class="col-md-4 control-label">City</label>  
+  <label class="col-md-4 control-label">City</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -209,8 +209,8 @@ class Registration extends Component {
 </div>
 
 <!-- Select Basic -->
-   
-<div class="form-group"> 
+
+<div class="form-group">
   <label class="col-md-4 control-label">State</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
@@ -276,7 +276,7 @@ class Registration extends Component {
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Zip Code</label>  
+  <label class="col-md-4 control-label">Zip Code</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -287,7 +287,7 @@ class Registration extends Component {
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Website or domain name</label>  
+  <label class="col-md-4 control-label">Website or domain name</label>
    <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
@@ -314,7 +314,7 @@ class Registration extends Component {
                     </div>
 
 <!-- Text area -->
-  
+
 <div class="form-group">
   <label class="col-md-4 control-label">Project Description</label>
     <div class="col-md-4 inputGroupContainer">

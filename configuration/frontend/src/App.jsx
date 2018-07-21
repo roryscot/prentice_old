@@ -1,3 +1,5 @@
+/* eslint-disable react/no-multi-comp*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
@@ -21,7 +23,6 @@ import ButtonPage from 'pages/ButtonPage';
 import CardPage from 'pages/CardPage';
 import ChartPage from 'pages/ChartPage';
 // pages
-import DashboardPage from 'pages/DashboardPage';
 import DropdownPage from 'pages/DropdownPage';
 import FormPage from 'pages/FormPage';
 import InputGroupPage from 'pages/InputGroupPage';
@@ -106,7 +107,7 @@ class RootContainerComponent extends Component {
               path="/"
               layout={MainLayout}
               component={props => (
-                <HomePage {...props} authState={STATE_LOGIN} /> 
+                <HomePage {...props} authState={STATE_LOGIN} />
               )}
             />
             <LayoutRoute
@@ -199,7 +200,7 @@ class RootContainerComponent extends Component {
               component={DemoProfilePage}
             />
 
-            
+
             {/* models */}
             <LayoutRoute
               exact

@@ -25,7 +25,7 @@ class RegisterPage extends Component {
     //     ]).isRequired,
     //     signUpPending: PropTypes.bool.isRequired
     //   }
-    
+
       state = {
         username: "",
         email:"",
@@ -52,7 +52,6 @@ class RegisterPage extends Component {
     if (this.props.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
-    console.log(this.state)
 
     return (
       <Row

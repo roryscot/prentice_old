@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 process.env.NODE_ENV = 'development';
 
 const fs = require('fs-extra');
