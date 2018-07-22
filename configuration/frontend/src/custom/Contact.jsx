@@ -12,6 +12,7 @@ import {
   Label,
   Input,
   CardImg,
+  CardText,
 } from 'reactstrap';
 import coffee from 'assets/img/bg/coffee-contact-email-4831.jpg';
 
@@ -21,7 +22,7 @@ const Contact = () => {
   return (
     <Page title="Contact" breadcrumbs={[{ name: 'Contact', active: true }]}>
      <Row>
-     <Col >
+     <Col md={7} sm={8} xs={12}>
           <Card>
             <CardHeader>Contact Details</CardHeader>
             <CardBody>
@@ -65,7 +66,7 @@ const Contact = () => {
                 
                 <FormGroup check row>
                   <Col sm={{ size: 10, offset: 2 }}>
-                    <Button>Submit</Button>
+                    <Button className="sumbit">Submit</Button>
                   </Col>
                 </FormGroup>
               </Form>
@@ -76,9 +77,11 @@ const Contact = () => {
         <Col>
           <Card>
           <CardImg
-              className="card-img-left"
               src={coffee}
             />
+            <CardText className="text-secondary h4">
+                  {"We would love to hear from you!"}
+            </CardText>
           </Card>
         </Col>
       </Row>
