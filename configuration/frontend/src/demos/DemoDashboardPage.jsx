@@ -150,9 +150,9 @@ class DemoDashboardPage extends React.Component {
               color="gradient-secondary"
               header="Announcement"
               avatarSize={60}
-              name="Jamy"
+              name="Jame Eno Tutorials"
               date="1 hour ago"
-              text="Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy euismod tinciduntut laoreet doloremagna"
+              text="Your institution has reached 50 users!"
               buttonProps={{
                 children: 'show',
               }}

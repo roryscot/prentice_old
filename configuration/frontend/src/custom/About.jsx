@@ -94,9 +94,10 @@ class AboutPage extends React.Component {
                     </div>
                 </div>
                 <hr />
+                <h4 className="Display-2">Examples</h4>
+
                 <div id="examples">
                     <Row>
-                        
                         <Col>
                         <TestsContainer
                             tests={sampleTests}
@@ -106,6 +107,9 @@ class AboutPage extends React.Component {
                         <Col className="mb-3">
                             <Card>
                                 <CardImg top src={mc} />
+                                <CardText>
+                                    <h4 className="Display-3 center text-secondary">Multiple Choice Test</h4>
+                                </CardText>
                             </Card>
                         </Col>
                     </Row>

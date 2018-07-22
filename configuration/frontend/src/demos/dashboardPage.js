@@ -24,44 +24,37 @@ export const productsData = [
   {
     id: 1,
     image: product1Image,
-    title: 'Admin Template',
-    description: 'Responsive admin template...',
-    right: '$36',
+    title: 'Jenny',
+    description: 'Progress',
+    right: '$60',
   },
   {
     id: 2,
     image: product2Image,
-    title: 'Schedule App',
-    description: 'Manage your schedule...',
-    right: '$9',
+    title: 'Seminar',
+    description: 'Attended',
+    right: '$45',
   },
   {
     id: 3,
     image: product3Image,
-    title: 'Chat App',
-    description: 'Realtime chat application...',
-    right: '$12',
+    title: 'Virtual Tutoring',
+    description: 'Progress',
+    right: '$45',
   },
   {
     id: 4,
     image: product4Image,
-    title: 'Wordpress Business Theme',
-    description: 'Over 100+ templates and pages...',
-    right: '$24',
+    title: 'Tom',
+    description: 'Absent',
+    right: '$15',
   },
   {
     id: 5,
     image: product5Image,
-    title: 'Camera App',
-    description: 'Over 30+ filter...',
-    right: '$6.99',
-  },
-  {
-    id: 6,
-    image: product6Image,
-    title: 'Calendar App',
-    description: 'Organize your schedule...',
-    right: '$0.99',
+    title: 'Jenny',
+    description: 'Progress',
+    right: '$60',
   },
 ];
 
@@ -208,11 +201,11 @@ export const supportTicketsData = [
 ];
 
 export const todosData = [
-  { id: 1, title: 'task -1', done: true },
-  { id: 2, title: 'task -2', done: false },
-  { id: 3, title: 'task -3', done: true },
-  { id: 4, title: 'task -4', done: true },
-  { id: 5, title: 'task -5', done: false },
+  { id: 1, title: 'Section -1', done: true },
+  { id: 2, title: 'Section -2', done: false },
+  { id: 3, title: 'ACT: 61C', done: true },
+  { id: 4, title: 'Read and complete Grammar Packet', done: true },
+  { id: 5, title: 'Review incorrect answers', done: false },
 ];
 
 export const chartjs = {
