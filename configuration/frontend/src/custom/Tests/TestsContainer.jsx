@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TestDisplay from './CollapsingTestDisplay';
 
+import NotificationSystem from 'react-notification-system';
+import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
+import {
+    MdImportantDevices,
+    MdLoyalty,
+  } from 'react-icons/lib/md';
+
 import {
     Row,
     Col,
@@ -22,6 +29,32 @@ class TestsContainer extends Component {
         allTestsShown: true,
         testContainersShown: true,
         allTestSectionsDisplayed: this.props.allTestSectionsDisplayed || true,
+    }
+    componentDidMount() {
+        setTimeout(() => {
+        if (!this.notificationSystem) {
+            return;
+        }
+
+        this.notificationSystem.addNotification({
+            title: <MdImportantDevices />,
+            message: 'Welcome',
+            level: 'info',
+        });
+        }, 1500);
+
+        setTimeout(() => {
+        if (!this.notificationSystem) {
+            return;
+        }
+
+        this.notificationSystem.addNotification({
+            title: <MdLoyalty />,
+            message:
+            'Click the tests to expand them!!',
+            level: 'info',
+        });
+        }, 2500);
     }
 
     toggle = () => {
@@ -54,11 +87,18 @@ class TestsContainer extends Component {
 
         return (
             <div>
+                <NotificationSystem
+                    dismissible={false}
+                    ref={notificationSystem =>
+                        (this.notificationSystem = notificationSystem)
+                    }
+                    style={NOTIFICATION_SYSTEM_STYLE}
+                />
                 {
                     allTests.map((row,i) => {
 
                         return (
-                            <Row>
+                            <Row key={row[0].testNumber + i}>
                                 <Col>
                                     <TestDisplay
                                         toggle={this.toggle}

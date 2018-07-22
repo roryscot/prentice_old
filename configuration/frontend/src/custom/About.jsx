@@ -2,11 +2,33 @@ import React from 'react';
 import {mockStudent, mockTutor, mockInstitution} from 'demos/devMock/devMock';
 
 import { mockStudentTest3} from 'demos/devMock/mockTestResults';
+import Page from 'components/Page';
 
 import book from 'assets/img/book-1528240.jpg';
 import mc from 'assets/img/mc.jpg';
+
+import img1 from 'assets/img/bg/background_640-2.jpg';
+import img2 from 'assets/img/bg/background_1920-17.jpg';
 import {Notes, TestsContainer} from './';
-import MainImage from './common/MainImage';
+
+
+
+import {
+    Card,
+    CardTitle,
+    CardBody,
+    CardImg,
+    CardImgOverlay,
+    CardText,
+    CardLink,
+    ListGroup,
+    ListGroupItem,
+    Row,
+    Col,
+    Button,
+  } from 'reactstrap';
+
+
 
 const sampleTests = [mockStudentTest3];
 
@@ -26,50 +48,69 @@ class AboutPage extends React.Component {
         let container;
         const userName = mockStudent.name.firstName;
         return (
-            <div id="about" className="article">
+            <Page id="about" className="article">
                 <div className="content">
                     <div className="inner">
                         <h2 className="major">About</h2>
                         <hr/>
-                        <MainImage src={book} alt="open book" />
-
-                        <div className="article minor">
-                            <p>
+                        <Row>
+                        <Col className="mb-3">
+                            <Card>
+                                <CardImg top src={book} />
+                            </Card>
+                        </Col>
+                        </Row>
+                        <p>
                                 This app was inspired by a local tutoring company in the Bay Area.
                                 Its purpose is to facilitate communication and organization in the education process.
                             </p>
-                            <p>
+                        <Row>
+                            
+                            <Col className="mb-3">
+                                <Card>
+                                <Card>
+                                    <CardImg top src={img1} />
+                                </Card>
+                                <CardText>
                                 Without this app, a tutoring company needs to keep track of student progress manually.
                                 A tutor needs to write down and keep track of which tests were taken,
                                 all of the missed questions, the commonly missed themes, the dates (in order to track progress over time),
                                 and the incedental notes about tutoring sessions.
-                            </p>
-                            <p>
+                                </CardText>
+                                </Card>
+                            </Col>
+                              <Col className="mb-3">
+                              <CardText>
                                 With this app, the student can enter the answers directly into the database, and get results instantly about
                                 which questions she missed, which themes she struggles with, and how her current results compare to her past results.
                                 Tutors can chart the progress of all of their students.
                                 And, business owners can easily track all of the activities of their tutors and students.
-                            </p>
-                        </div>
+                                </CardText>
+                                <Card>
+                                    <CardImg top src={img2} />
+                                </Card>
+                            </Col>
+                        </Row>
                     </div>
-
                 </div>
                 <hr />
-
                 <div id="examples">
-                    <h3>Examples:</h3>
-                        <p>
-                            Click the green {"'Expansion'"} symbol in the upper right corner of the visual tool to see the test results.
-                        </p>
-                        <MainImage src={mc} alt="multiple choice test" />
-
+                    <Row>
+                        
+                        <Col>
                         <TestsContainer
                             tests={sampleTests}
                             username={userName}
                         />
-                        <Notes />
+                        </Col>
+                        <Col className="mb-3">
+                            <Card>
+                                <CardImg top src={mc} />
+                            </Card>
+                        </Col>
+                    </Row>
                 </div>
-            </div>
+            </Page>
         );
     }
 }

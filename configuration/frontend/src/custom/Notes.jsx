@@ -3,6 +3,21 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {notes} from "../redux/actions";
 
+import {
+    Card,
+    CardTitle,
+    CardBody,
+    CardImg,
+    CardImgOverlay,
+    CardText,
+    CardLink,
+    ListGroup,
+    ListGroupItem,
+    Row,
+    Col,
+    Table,
+    Button,
+  } from 'reactstrap';
 
 class Notes extends Component {
     static propTypes = {
@@ -75,20 +90,20 @@ class Notes extends Component {
                     <input type="submit" value="Save Note" />
                     <button onClick={this.resetState}>Reset</button>
                 </form>
-        <table>
+        <Table>
           <tbody>
             {
                 this.props.notes.map((note,id) => (
                     <tr key={`note_${id}`}>
-                        <td><button onClick={() => this.confirmDelete(id)} >delete</button></td>
+                        <td><Button onClick={() => this.confirmDelete(id)} >delete</Button></td>
                         <td>{note.text}</td>
-                        <td><button onClick={() => this.selectForEdit(id)}>edit</button></td>
+                        <td><Button onClick={() => this.selectForEdit(id)}>edit</Button></td>
 
                     </tr>
                 ))
             }
           </tbody>
-        </table>
+        </Table>
       </div>
     );
   }

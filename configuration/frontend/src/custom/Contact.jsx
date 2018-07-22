@@ -1,44 +1,89 @@
-import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-export default class Contact extends Component {
+import {
+  Row,
+  Col,
+  Card,
+  CardHeader,
+  CardBody,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  CardImg,
+} from 'reactstrap';
+import coffee from 'assets/img/bg/coffee-contact-email-4831.jpg';
 
-  render() {
-    return (
-      <div id="contact">
-        <h2 className="major">Contact</h2>
-        <form method="post" action="#">
-          <div className="fields">
-            <div className="field half">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
-            </div>
-            <div className="field half">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
-            </div>
-            <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
-            </div>
-          </div>
-          <ul className="actions">
-            <li><input type="submit" value="Send Message" className="primary" /></li>
-            <li><input type="reset" value="Reset" /></li>
-          </ul>
-        </form>
-        <ul className="icons">
-          <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
-          <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li>
-          <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li>
-          <li><a href="#" className="icon fa-github"><span className="label">GitHub</span></a></li>
-        </ul>
-      </div>
-    );
-  }
-}
+import Page from 'components/Page';
 
-Contact.propTypes = {
+const Contact = () => {
+  return (
+    <Page title="Contact" breadcrumbs={[{ name: 'Contact', active: true }]}>
+     <Row>
+     <Col >
+          <Card>
+            <CardHeader>Contact Details</CardHeader>
+            <CardBody>
+              <Form>
+                <FormGroup row>
+                  <Label for="email" sm={2}>
+                    Email
+                  </Label>
+                  <Col sm={10}>
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="name" sm={2}>
+                    Name
+                  </Label>
+                  <Col sm={10}>
+                    <Input
+                      type="text"
+                      name="text"
+                      placeholder="Contact Name"
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="message" sm={2}>
+                    Message
+                  </Label>
+                  <Col sm={10}>
+                    <Input 
+                    type="textarea" 
+                    name="text" 
+                    placeholder="Write your message here..."  
+                  />
+                  </Col>
+                </FormGroup>
+                
+                <FormGroup check row>
+                  <Col sm={{ size: 10, offset: 2 }}>
+                    <Button>Submit</Button>
+                  </Col>
+                </FormGroup>
+              </Form>
+            </CardBody>
+          </Card>
+        </Col>
 
+        <Col>
+          <Card>
+          <CardImg
+              className="card-img-left"
+              src={coffee}
+            />
+          </Card>
+        </Col>
+      </Row>
+    </Page>
+  );
 };
+
+export default Contact;
