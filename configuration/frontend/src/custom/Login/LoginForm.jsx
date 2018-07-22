@@ -14,11 +14,6 @@ class LoginForm extends React.Component {
   render() {
     const {
       showLogo,
-      usernameLabel,
-      usernameInputProps,
-      passwordLabel,
-      passwordInputProps,
-      confirmPasswordLabel,
       onLogoClick,
       onSubmit,
       onChange

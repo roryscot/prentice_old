@@ -26,13 +26,26 @@ class RegisterPage extends Component {
     //     signUpPending: PropTypes.bool.isRequired
     //   }
 
-      state = {
-        username: "",
-        email:"",
-        password: "",
-        confirmPassword: "",
-        accountType: null,
-      }
+    state = {
+    username: "",
+    email:"",
+    password: "",
+    confirmPassword: "",
+    accountType: null,
+    
+    // Validation
+    formIsValid: false,
+    hasTriedToSubmit: false,
+    signUpError: false,
+    signUpPending: false,
+    submitting: false,
+
+    unValid: false,
+    emValid: false,
+    p1Valid: false,
+    p2Valid: false,
+    atValid: null,
+    }
 
   handleLogoClick = () => {
     this.props.history.push('/');
@@ -40,15 +53,83 @@ class RegisterPage extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.warn("Validate data not implemented");
-    this.props.register(this.state.username, this.state.email, this.state.password, this.state.accountType);
+    this.setState({
+        hasTriedToSubmit: true
+    });
+    return this.validateFormState(
+        this.state.accountType,
+        this.state.username, 
+        this.state.email, 
+        this.state.password, 
+        this.state.confirmPassword, 
+    ) ? 
+        this.props.register(
+            this.state.username, 
+            this.state.email, 
+            this.state.password, 
+            this.state.accountType
+        )
+        :
+        this.invalidWarning();
   }
 
   onChange = (e) =>{
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  validateUsernameState = (e, un = this.state.username) => {
+    this.setState({
+        unValid: un.length > 2 ?
+                    un.length < 30 ?
+                        true :
+                        false
+                : false
+    })
+}
+
+  validateEmailState = (e, em = this.state.email) => (
+    this.setState({
+        emValid: em && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(em) ?
+                    false : true
+    })
+  )
+  validatePassword1State = (e, pw = this.state.password) => (
+      this.setState({
+          p1Valid: pw && /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(pw) ?
+                    true : false
+      })
+  )
+
+  validatePassword2State = (e, p1 = this.state.password, p2 = this.state.confirmPassword) => (
+    this.setState({
+        p2Valid: p1 === p2 ? true : false
+    })
+)
+
+    validateAccountTypeState = (e, at = this.state.accountType) => (
+        this.setState({
+            atValid: at === 'student' ||
+            at === 'tutor' ||
+            at === 'entrepeneur' ?
+                true : false
+        })
+    )
+
+  validateFormState = (at, un, em, p1, p2) => (
+            this.validateAccountTypeState(at) &&
+            this.validateUsernameState(un) &&
+            this.validateEmailState(em) &&
+            this.validatePassword1State(p1) &&
+            this.validatePassword2State(p1,p2) ?
+                true : false
+  )
+
+  invalidWarning=()=>(
+      console.warn("Invalid inputs")
+  )
+
   render() {
+      console.log(this.state.atValid)
     if (this.props.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
@@ -63,10 +144,27 @@ class RegisterPage extends Component {
         <Col md={6} lg={4}>
           <Card body>
             <RegisterForm
-              onChangeAuthState={this.handleAuthState}
-              onChange={this.onChange}
-              onSubmit={this.onSubmit}
-              onLogoClick={this.handleLogoClick}
+                onChangeAuthState={this.handleAuthState}
+                onChange={this.onChange}
+                onSubmit={this.onSubmit}
+                onLogoClick={this.handleLogoClick}
+                submitting={this.state.submitting}
+                formIsValid={this.state.formIsValid}
+                signUpError={this.state.signUpError}
+                signUpPending={this.state.signUpError}
+                email={this.state.email}
+                username={this.state.username}
+                password={this.state.password}
+                confirmPassword={this.state.confirmPassword}
+                validateUsernameState={this.validateUsernameState}
+                validateEmailState={this.validateEmailState}
+                validatePassword1State={this.validatePassword1State}
+                validatePassword2State={this.validatePassword2State}
+                unValid={this.state.unValid}
+                emValid={this.state.emValid}
+                p1Valid={this.state.p1Valid}
+                p2Valid={this.state.p2Valid}
+                atValid={this.state.atValid}
             />
           </Card>
         </Col>
