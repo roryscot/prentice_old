@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import { Card, Col, Row } from 'reactstrap';import {connect} from "react-redux";
+import { Card, Col, Row } from 'reactstrap';
+import {connect} from "react-redux";
 
 import {Redirect} from "react-router-dom";
 import {auth} from "redux/actions";
@@ -53,24 +54,19 @@ class RegisterPage extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+
     this.setState({
-        hasTriedToSubmit: true
+        submitting: true,
     });
-    return this.validateFormState(
-        this.state.accountType,
-        this.state.username, 
-        this.state.email, 
-        this.state.password, 
-        this.state.confirmPassword, 
-    ) ? 
-        this.props.register(
-            this.state.username, 
-            this.state.email, 
-            this.state.password, 
-            this.state.accountType
-        )
-        :
-        this.invalidWarning();
+        return this.validateFormState() ? 
+            this.props.register(
+                this.state.username, 
+                this.state.email, 
+                this.state.password, 
+                this.state.accountType
+            )
+            :
+            this.invalidWarning();
   }
 
   onChange = (e) =>{
@@ -115,21 +111,20 @@ class RegisterPage extends Component {
         })
     )
 
-  validateFormState = (at, un, em, p1, p2) => (
-            this.validateAccountTypeState(at) &&
-            this.validateUsernameState(un) &&
-            this.validateEmailState(em) &&
-            this.validatePassword1State(p1) &&
-            this.validatePassword2State(p1,p2) ?
-                true : false
-  )
+  validateFormState = () => (
+    this.state.atValid &&
+        this.state.unValid &&
+        this.state.emValid &&
+        this.state.p1Valid &&
+        this.state.p2Valid ?
+            true : false
+)
 
   invalidWarning=()=>(
-      console.warn("Invalid inputs")
+      alert("Invalid inputs.")
   )
 
   render() {
-      console.log(this.state.atValid)
     if (this.props.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
@@ -160,11 +155,13 @@ class RegisterPage extends Component {
                 validateEmailState={this.validateEmailState}
                 validatePassword1State={this.validatePassword1State}
                 validatePassword2State={this.validatePassword2State}
+                validateAccountTypeState={this.validateAccountTypeState}
                 unValid={this.state.unValid}
                 emValid={this.state.emValid}
                 p1Valid={this.state.p1Valid}
                 p2Valid={this.state.p2Valid}
                 atValid={this.state.atValid}
+                errors={this.props.errors}
             />
           </Card>
         </Col>

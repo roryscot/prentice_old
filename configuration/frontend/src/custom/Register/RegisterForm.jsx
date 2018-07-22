@@ -21,11 +21,11 @@ class RegisterForm extends React.Component {
         validatePassword1State: PropTypes.func.isRequired,
         validatePassword2State: PropTypes.func.isRequired,
         hasTriedToSubmit: PropTypes.bool.isRequired,
-        // signUpError: PropTypes.oneOfType([
-        //   PropTypes.object,
-        //   PropTypes.bool
-        // ]).isRequired,
-        // signUpPending: PropTypes.bool.isRequired
+        signUpError: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.bool
+        ]).isRequired,
+        signUpPending: PropTypes.bool.isRequired
       }
 
       
@@ -45,11 +45,13 @@ class RegisterForm extends React.Component {
         validateUsernameState,
         validatePassword1State,
         validatePassword2State,
+        validateAccountTypeState,
         unValid,
         emValid,
         p1Valid,
         p2Valid,
         atValid,
+        formIsValid,
     } = this.props;
 
     return (
@@ -68,15 +70,15 @@ class RegisterForm extends React.Component {
         <FormGroup >
             <Row className="center" >
                 <Col>
-                    <Input type="radio" id="student" name="accountType" value="student" onChange={onChange} />
+                    <Input type="radio" id="student" name="accountType" value="student" onChange={onChange} onBlur={validateAccountTypeState}/>
                     <Label htmlFor="student">Student</Label>
                 </Col>
                 <Col>
-                    <Input type="radio" id="tutor" name="accountType" value="tutor" onChange={onChange} />
+                    <Input type="radio" id="tutor" name="accountType" value="tutor" onChange={onChange} onBlur={validateAccountTypeState}/>
                     <Label htmlFor="tutor">Tutor</Label>
                 </Col>
                 <Col>
-                    <Input type="radio" id="entrepreneur" name="accountType" value="entrepreneur" onChange={onChange} />
+                    <Input type="radio" id="entrepreneur" name="accountType" value="entrepreneur" onChange={onChange} onBlur={validateAccountTypeState}/>
                     <Label htmlFor="entrepreneur">Entrepreneur</Label>
                 </Col>
             </Row>
@@ -155,6 +157,24 @@ class RegisterForm extends React.Component {
             Already have an account? <Link to="/login" className="open"><em>Login</em></Link>
             </h6>
         </div>
+        {
+            submitting && !formIsValid ?
+                <h5 className="text-danger">There was an error in your submission</h5> :
+                null
+          
+        }
+        {
+            this.props.errors.length > 0 && (
+              <ul>
+                {
+                  this.props.errors.map(error => (
+                    error.message === 'Authentication credentials were not provided.' ? null :
+                    <li key={error.field} className="text-danger">{error.field + ': ' + error.message}</li>
+                  ))
+                }
+              </ul>
+            )
+          }
       </Form>
     );
   }

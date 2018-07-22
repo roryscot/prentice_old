@@ -1,6 +1,7 @@
 import BlueLogo from 'assets/img/logo/LogoMark.png';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 import { Link } from "react-router-dom";
 import AuthInput from 'custom/common/AuthInput';
@@ -69,6 +70,19 @@ class LoginForm extends React.Component {
             {"Don't"} have an account? <Link to="/register" className="open"><em>Register</em></Link>
             </h6>
         </div>
+
+        {
+            this.props.errors.length > 0 && (
+              <ul>
+                {
+                  this.props.errors.map(error => (
+                    error.message === 'Authentication credentials were not provided.' ? null :
+                    <li key={error.field} className="text-danger">{error.field + ': ' + error.message}</li>
+                  ))
+                }
+              </ul>
+            )
+          }
       </Form>
     );
   }
@@ -111,4 +125,17 @@ LoginForm.defaultProps = {
   onLogoClick: () => {},
 };
 
-export default LoginForm;
+const mapStateToProps = state => {
+  let errors = [];
+  if (state.auth.errors) {
+    errors = Object.keys(state.auth.errors).map(field => {
+      return {field, message: state.auth.errors[field]};
+    });
+  }
+  return {
+    errors,
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps)(LoginForm);
